@@ -3,6 +3,8 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+// Module to communicate between the window and app
+const ipcMain = electron.ipcMain;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -13,7 +15,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`)
+  mainWindow.loadURL(`file://${__dirname}/ui/index.html`)
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
@@ -24,6 +26,10 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
+  })
+
+  ipcMain.on('ping', () => {
+    console.log('pong');
   })
 }
 
