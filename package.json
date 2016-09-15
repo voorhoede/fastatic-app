@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "lint": "eslint ./**/*.js"
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
