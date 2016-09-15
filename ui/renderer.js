@@ -1,22 +1,35 @@
 const { ipcRenderer } = require('electron');
 const fs = require('fs');
 
-console.log('send ping');
-ipcRenderer.send('ping');
+const dropzone = document.querySelector('[data-dropzone]');
+const dropzoneVisualize = document.querySelector('[data-dropzone-visualize]');
 
-window.ondrop = function ondrop(event) {
+function ondrop(event) {
 	event.preventDefault();
 	const files = event.dataTransfer.files;
 	const file = files[0] || {};
 	const fileStats = fs.statSync(file.path);
+	const isDir = fileStats.isDirectory();
 
 	console.log('path:', file.path);
-	console.log('is folder:', fileStats.isDirectory());
-};
+	console.log('is folder:', isDir);
+}
+
+function onDragEnter(event) {
+	event.preventDefault();
+	dropzoneVisualize.classList.add('dropzone__visualize--active');
+}
+
+function onDragLeave(event) {
+	event.preventDefault();
+	dropzoneVisualize.classList.remove('dropzone__visualize--active');
+}
 
 function preventDefault(event) {
 	event.preventDefault();
 }
 
-window.ondragover = preventDefault;
-window.ondragleave = preventDefault;
+dropzone.ondragover = preventDefault;
+dropzone.ondragleave = onDragLeave;
+dropzone.ondragenter = onDragEnter;
+dropzone.ondrop = ondrop;

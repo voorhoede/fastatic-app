@@ -1,0 +1,23 @@
+* {
+	box-sizing: border-box;
+}
+
+.dropzone {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+.dropzone__visualize {
+	width: 95%;
+	height: 95%;
+	border: 1px dashed;
+	margin: 2.5%;
+	pointer-events: none;
+}
+
+.dropzone__visualize--active {
+	border: 10px dashed;
+}
