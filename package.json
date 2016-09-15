@@ -4,7 +4,8 @@
   "description": "A Graphical User Interface for fastatic",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "lint": "eslint ./**/*.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,14 @@
     "url": "https://github.com/voorhoede-labs/fastatic-gui/issues"
   },
   "homepage": "https://github.com/voorhoede-labs/fastatic-gui#readme",
-  "devDependencies": {
+  "dependencies": {
     "electron": "1.3.4"
+  },
+  "devDependencies": {
+    "eslint": "3.5.0",
+    "eslint-config-airbnb": "11.1.0",
+    "eslint-plugin-import": "1.15.0",
+    "eslint-plugin-jsx-a11y": "2.2.2",
+    "eslint-plugin-react": "6.2.2"
   }
 }
