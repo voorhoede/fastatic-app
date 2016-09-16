@@ -13,6 +13,10 @@ function ondrop(event) {
 
 	console.log('path:', file.path);
 	console.log('is folder:', isDir);
+
+	if (isDir) {
+		ipcRenderer.send('run-fastatic', { dir: file.path });
+	}
 }
 
 function onDragEnter(event) {
