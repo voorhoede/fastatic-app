@@ -1,8 +1,16 @@
 const { ipcRenderer } = require('electron');
 const fs = require('fs');
+const configureStore = require('./store');
+const initialState = require('./initial-state');
 
-const dropzone = document.querySelector('[data-dropzone]');
-const dropzoneVisualize = document.querySelector('[data-dropzone-visualize]');
+const dropzone = document.querySelector('[data-dropzones]');
+
+const store = configureStore(initialState);
+store.subscribe(render);
+store.dispatch({ type: 'SRC_FOLDER_DROPPED', value: true });
+function render() {
+	console.log(store.getState());
+}
 
 function ondrop(event) {
 	event.preventDefault();
@@ -21,12 +29,12 @@ function ondrop(event) {
 
 function onDragEnter(event) {
 	event.preventDefault();
-	dropzoneVisualize.classList.add('dropzone__visualize--active');
+	// dropzoneVisualize.classList.add('dropzone__visualize--active');
 }
 
 function onDragLeave(event) {
 	event.preventDefault();
-	dropzoneVisualize.classList.remove('dropzone__visualize--active');
+	// dropzoneVisualize.classList.remove('dropzone__visualize--active');
 }
 
 function preventDefault(event) {

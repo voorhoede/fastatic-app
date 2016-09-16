@@ -10,6 +10,8 @@
 		"no-console": 0,
 		"no-tabs": 0,
 		"no-param-reassign": 0,
-		"indent": ["error", "tab"]
+		"indent": 0,
+		"comma-dangle": 0,
+		"no-use-before-define": 0
 	}
 }
