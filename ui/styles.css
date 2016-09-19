@@ -49,6 +49,24 @@ fast-dropzones {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	position: relative;
+}
+
+.dropzones__in-progress-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	opacity: 0;
+	transition: opacity 0.25s ease;
+	pointer-events: none;
+}
+
+.dropzones__in-progress-overlay--visible {
+	pointer-events: initial;
+	opacity: 0.75;
 }
 
 .dropzone {
@@ -79,4 +97,18 @@ fast-dropzones {
 fast-footer {
 	display: block;
 	height: 50px;
+}
+
+.result {
+	position: absolute;
+	width: 100%;
+	height: calc(100% - 37px);
+	margin-top: 37px;
+	background: white;
+	transform: translateY(100%);
+	transition: transform 0.25s ease;
+}
+
+.result--visible {
+	transform: translateY(0%);
 }

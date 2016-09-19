@@ -11,6 +11,11 @@ const fastatic = (state = {}, action) => {
 				isRunning: false
 			});
 
+		case 'FASTATIC_OUTPUT':
+			return Object.assign(state, {
+				output: action.output
+			});
+
 		default:
 			return state;
 	}

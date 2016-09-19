@@ -4,9 +4,21 @@
 	<fast-dropzones
 		store="{ opts.store }"
 		state="{ opts.store.getState().dropzones }"
+		is-running="{ opts.store.getState().fastatic.isRunning }"
 	></fast-dropzones>
 
 	<fast-footer
 		is-running="{ opts.store.getState().fastatic.isRunning }"
 	></fast-footer>
+
+	<fast-result
+		fastatic-output="{ opts.store.getState().fastatic.output }"
+		hide-callback="{ hideResult }"
+	></fast-result>
+
+	<script>
+		this.hideResult = () => {
+			// this.opts.store.dispatch({ type: 'HIDE_RESULT' });
+		};
+	</script>
 </fast-app>

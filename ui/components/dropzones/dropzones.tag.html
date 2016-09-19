@@ -11,6 +11,14 @@
 		show-sync-button="{ !!opts.state.src.path && opts.state.src.path !== opts.state.dest.path }"
 	></fast-dropzone>
 
+	<div
+		class="{
+			dropzones__in-progress-overlay: true,
+			dropzones__in-progress-overlay--visible: opts.isRunning
+			}"
+		data-progress-overlay
+	></div>
+
 	<script>
 		const fs = require('fs');
 
@@ -19,6 +27,7 @@
 		tag.on('mount', () => {
 			const dropzoneSrc = tag.root.querySelector('[data-dropzone="src"]');
 			const dropzoneDest = tag.root.querySelector('[data-dropzone="dest"]');
+			const overlay = tag.root.querySelector('[data-progress-overlay]');
 
 			dropzoneSrc.ondragover = preventDefault;
 			dropzoneSrc.ondragleave = onDragLeave;
@@ -29,6 +38,11 @@
 			dropzoneDest.ondragleave = onDragLeave;
 			dropzoneDest.ondragenter = onDragEnter;
 			dropzoneDest.ondrop = onDrop;
+
+			overlay.ondragover = preventDefault;
+			overlay.ondragleave = preventDefault;
+			overlay.ondragenter = preventDefault;
+			overlay.ondrop = preventDefault;
 		});
 
 		tag.syncPaths = () => {

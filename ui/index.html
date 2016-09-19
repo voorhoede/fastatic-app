@@ -11,12 +11,11 @@
 	</body>
 
 	<script>
-		const store = require('./renderer.js')
+		const store = require('./renderer.js');
 		const riot = require('riot');
 		require('./compiled-tags.js');
-		riot.mount('fast-app', {store: store});
-		store.subscribe(() => {
-			riot.update(store.getState());
-		});
+
+		riot.mount('fast-app', { store });
+		store.subscribe(() => riot.update());
 	</script>
 </html>

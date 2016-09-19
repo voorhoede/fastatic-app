@@ -29,9 +29,11 @@ function startFastatic(state) {
 	}
 }
 
-ipcRenderer.on('stop-fastatic', () => {
+ipcRenderer.on('stop-fastatic', (event, args) => {
+	console.log(args);
 	store.dispatch({ type: 'RESET_DROPZONES' });
 	store.dispatch({ type: 'STOP_FASTATIC' });
+	store.dispatch({ type: 'FASTATIC_OUTPUT', output: args });
 });
 
 module.exports = store;
