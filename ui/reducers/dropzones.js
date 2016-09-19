@@ -1,8 +1,8 @@
 const dropzone = (state = {}, action) => {
 	switch (action.type) {
-		case 'FOLDER_DROPPED':
+		case 'IS_FILE':
 			return Object.assign(state, {
-				dropped: action.value
+				isFile: action.value
 			});
 
 		case 'HOVERING':
@@ -23,13 +23,13 @@ const dropzone = (state = {}, action) => {
 const dropzones = (state = {}, action) => {
 	switch (action.type) {
 
-		case 'SRC_FOLDER_DROPPED':
+		case 'SRC_IS_FILE':
 			return Object.assign(state, {
-				src: dropzone(state.src, Object.assign(action, { type: 'FOLDER_DROPPED' }))
+				src: dropzone(state.src, Object.assign(action, { type: 'IS_FILE' }))
 			});
-		case 'DEST_FOLDER_DROPPED':
+		case 'DEST_IS_FILE':
 			return Object.assign(state, {
-				dest: dropzone(state.dest, Object.assign(action, { type: 'FOLDER_DROPPED' }))
+				dest: dropzone(state.dest, Object.assign(action, { type: 'IS_FILE' }))
 			});
 
 		case 'SRC_HOVERING':

@@ -1,12 +1,12 @@
 module.exports = {
 	dropzones: {
 		src: {
-			dropped: false,
+			isFile: false,
 			hovering: false,
 			path: null
 		},
 		dest: {
-			dropped: false,
+			isFile: false,
 			hovering: false,
 			path: null
 		}

@@ -1,4 +1,6 @@
 const electron = require('electron');
+const devtoolsInstaller = require('electron-devtools-installer');
+const { REDUX_DEVTOOLS } = require('electron-devtools-installer');
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
@@ -10,9 +12,11 @@ const ipcMain = electron.ipcMain;
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
+devtoolsInstaller.default(REDUX_DEVTOOLS);
+
 function createWindow() {
 	// Create the browser window.
-	mainWindow = new BrowserWindow({ width: 800, height: 600 });
+	mainWindow = new BrowserWindow({ width: 800, height: 600, titleBarStyle: 'hidden-inset' });
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(`file://${__dirname}/ui/index.html`);

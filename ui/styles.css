@@ -2,22 +2,81 @@
 	box-sizing: border-box;
 }
 
-.dropzone {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
+html,
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 }
 
-.dropzone__visualize {
-	width: 95%;
-	height: 95%;
-	border: 1px dashed;
-	margin: 2.5%;
+body {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+h1 {
+	margin: 0;
+}
+
+fast-app {
+	display: block;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+fast-header {
+	display: block;
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+	height: 37px;
+	font-family: monospace;
+	text-align: center;
+}
+
+fast-header h1 {
+	line-height: 2.4rem;
+}
+
+fast-header header {
 	pointer-events: none;
 }
 
-.dropzone__visualize--active {
-	border: 10px dashed;
+fast-dropzones {
+	display: block;
+	flex: 1;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.dropzone {
+	position: relative;
+	border: 4px dashed blue;
+	width: 45%;
+	height: 90%;
+	transition: border-color 0.5s ease;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 20px;
+}
+
+.dropzone.dropzone--hovering {
+	border: 4px dashed lightblue;
+}
+
+.dropzone.dropzone--is-file{
+	border: 4px dashed red;
+}
+
+.dropzone__message {
+	text-align: center;
+	word-wrap: break-word;
+}
+
+fast-footer {
+	display: block;
+	height: 50px;
 }

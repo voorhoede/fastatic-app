@@ -7,26 +7,16 @@
 		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
-		<header class="masthead">
-			<h1>Fastatic!</h1>
-		</header>
-
-		<div class="dropzones" data-dropzones>
-			<section class="dropzone">
-
-			</section>
-			<section class="dropzone">
-
-			</section>
-		</div>
-
-		<footer class="progress-indicator">
-
-		</footer>
+		<fast-app></fast-app>
 	</body>
 
 	<script>
-		// You can also require other files to run in this process
-		require('./renderer.js')
+		const store = require('./renderer.js')
+		const riot = require('riot');
+		require('./compiled-tags.js');
+		riot.mount('fast-app', {store: store});
+		store.subscribe(() => {
+			riot.update(store.getState());
+		});
 	</script>
 </html>
