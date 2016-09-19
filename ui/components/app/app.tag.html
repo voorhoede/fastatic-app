@@ -6,5 +6,7 @@
 		state="{ opts.store.getState().dropzones }"
 	></fast-dropzones>
 
-	<fast-footer></fast-footer>
+	<fast-footer
+		is-running="{ opts.store.getState().fastatic.isRunning }"
+	></fast-footer>
 </fast-app>
