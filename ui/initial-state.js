@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = () => ({
 	dropzones: {
 		src: {
 			isFile: false,
@@ -10,5 +10,8 @@ module.exports = {
 			hovering: false,
 			path: null
 		}
+	},
+	fastatic: {
+		isRunning: false
 	}
-};
+});

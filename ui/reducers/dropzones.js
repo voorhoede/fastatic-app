@@ -1,3 +1,5 @@
+const initialDropzones = require('../initial-state')().dropzones;
+
 const dropzone = (state = {}, action) => {
 	switch (action.type) {
 		case 'IS_FILE':
@@ -49,6 +51,9 @@ const dropzones = (state = {}, action) => {
 			return Object.assign(state, {
 				dest: dropzone(state.dest, Object.assign(action, { type: 'PATH' }))
 			});
+
+		case 'RESET_DROPZONES':
+			return initialDropzones;
 
 		default:
 			return state;

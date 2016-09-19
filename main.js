@@ -59,5 +59,7 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 ipcMain.on('run-fastatic', (event, args) => {
-	console.log(args.dir);
+	setTimeout(() => {
+		event.sender.send('stop-fastatic');
+	}, 2000);
 });
