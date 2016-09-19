@@ -13,5 +13,9 @@ module.exports = () => ({
 	},
 	fastatic: {
 		isRunning: false
+	},
+	result: {
+		show: false,
+		output: {}
 	}
 });

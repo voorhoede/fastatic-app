@@ -12,13 +12,14 @@
 	></fast-footer>
 
 	<fast-result
-		fastatic-output="{ opts.store.getState().fastatic.output }"
+		output="{ opts.store.getState().result.output }"
+		show="{ opts.store.getState().result.show }"
 		hide-callback="{ hideResult }"
 	></fast-result>
 
 	<script>
 		this.hideResult = () => {
-			// this.opts.store.dispatch({ type: 'HIDE_RESULT' });
+			this.opts.store.dispatch({ type: 'HIDE_RESULT' });
 		};
 	</script>
 </fast-app>

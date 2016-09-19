@@ -1,5 +1,8 @@
 <fast-result
-	class="result result--visible">
+	class="{
+		result:true,
+		result--visible:opts.show
+	}">
 	<h2>Result</h2>
 	<button onclick="{ opts.hideCallback }">Close</button>
 	<table>
@@ -12,11 +15,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>foo</td>
-				<td>bar</td>
-				<td>baz</td>
-				<td>blub</td>
+			<tr
+			each="{ type, srcValue in opts.output.filesize.src }"
+			if="{ srcValue - parent.opts.output.filesize.dest[type] }">
+				<td>{ type }</td>
+				<td>{ srcValue }</td>
+				<td>{ parent.opts.output.filesize.dest[type] }</td>
+				<td>{ srcValue - parent.opts.output.filesize.dest[type] }</td>
 			</tr>
 		</tbody>
 		<tfoot>

@@ -33,7 +33,8 @@ ipcRenderer.on('stop-fastatic', (event, args) => {
 	console.log(args);
 	store.dispatch({ type: 'RESET_DROPZONES' });
 	store.dispatch({ type: 'STOP_FASTATIC' });
-	store.dispatch({ type: 'FASTATIC_OUTPUT', output: args });
+	store.dispatch({ type: 'ADD_RESULT', output: args });
+	store.dispatch({ type: 'SHOW_RESULT' });
 });
 
 module.exports = store;
