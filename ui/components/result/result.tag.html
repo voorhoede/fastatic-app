@@ -16,21 +16,36 @@
 		</thead>
 		<tbody>
 			<tr
-			each="{ type, srcValue in opts.output.filesize.src }"
-			if="{ srcValue - parent.opts.output.filesize.dest[type] }">
+			each="{ type, srcValue in opts.srcResult }"
+			if="{ srcValue - parent.opts.destResult[type] }">
 				<td>{ type }</td>
-				<td>{ srcValue }</td>
-				<td>{ parent.opts.output.filesize.dest[type] }</td>
-				<td>{ srcValue - parent.opts.output.filesize.dest[type] }</td>
+				<td>{ filesize(srcValue) }</td>
+				<td>{ filesize(parent.opts.destResult[type]) }</td>
+				<td>{ filesize(srcValue - parent.opts.destResult[type]) } - ({percent(srcValue - parent.opts.destResult[type], [srcValue], {suffix: '%'})})</td>
 			</tr>
 		</tbody>
 		<tfoot>
 			<tr>
 				<td>Total</td>
-				<td>09384</td>
-				<td>098123</td>
-				<td>76152</td>
+				<td>{ filesize(srcTotal) }</td>
+				<td>{ filesize(destTotal) }</td>
+				<td>{ filesize(srcTotal - destTotal)} - ({percent(srcTotal - destTotal, [srcTotal], {suffix: '%'})}) }</td>
 			</tr>
 		</tfoot>
 	</table>
+
+	<script>
+		this.filesize = require('filesize');
+		this.percent = require('calc-percent');
+
+		this.on('update', () => {
+			this.srcTotal = Object.keys(this.opts.srcResult || {}).reduce((total, type) => {
+				return total + this.opts.srcResult[type];
+			}, 0);
+
+			this.destTotal = Object.keys(this.opts.destResult || {}).reduce((total, type) => {
+				return total + this.opts.destResult[type];
+			}, 0);
+		});
+	</script>
 </fast-result>
