@@ -1,8 +1,8 @@
 const configureStore = require('./store');
-const initialState = require('./initial-state');
+const getInitialState = require('./initial-state');
 const { ipcRenderer } = require('electron');
 
-const store = configureStore(Object.assign({}, initialState()));
+const store = configureStore(Object.assign({}, getInitialState()));
 store.subscribe(() => {
 	const state = store.getState();
 	startFastatic(state);
@@ -30,7 +30,6 @@ function startFastatic(state) {
 }
 
 ipcRenderer.on('stop-fastatic', (event, args) => {
-	console.log(args);
 	store.dispatch({ type: 'RESET_DROPZONES' });
 	store.dispatch({ type: 'STOP_FASTATIC' });
 	store.dispatch({ type: 'ADD_RESULT', output: args });

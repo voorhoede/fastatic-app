@@ -1,4 +1,4 @@
-const initialDropzones = require('../initial-state')().dropzones;
+const getInitialState = require('../initial-state');
 
 const dropzone = (state = {}, action) => {
 	switch (action.type) {
@@ -53,7 +53,7 @@ const dropzones = (state = {}, action) => {
 			});
 
 		case 'RESET_DROPZONES':
-			return initialDropzones;
+			return getInitialState().dropzones;
 
 		default:
 			return state;
