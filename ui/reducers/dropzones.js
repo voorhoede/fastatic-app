@@ -1,4 +1,4 @@
-const getInitialState = require('../initial-state');
+const getInitialState = require('../get-initial-state');
 
 const dropzone = (state = {}, action) => {
 	switch (action.type) {

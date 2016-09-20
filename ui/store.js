@@ -1,5 +1,5 @@
 const { createStore } = require('redux');
-const getInitialState = require('./initial-state');
+const getInitialState = require('./get-initial-state');
 const reducer = require('./reducers/reducers');
 
 function configureStore(initialState) {
