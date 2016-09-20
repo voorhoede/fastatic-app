@@ -11,8 +11,9 @@
 	</body>
 
 	<script>
-		const store = require('./index.js');
+		const store = require('./store');
 		const riot = require('riot');
+		require('./index');
 		require('./compiled-tags.js');
 
 		riot.mount('fast-app', { store });

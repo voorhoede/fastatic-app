@@ -1,8 +1,6 @@
-const configureStore = require('./store');
-const getInitialState = require('./initial-state');
+const store = require('./store');
 const { ipcRenderer } = require('electron');
 
-const store = configureStore(Object.assign({}, getInitialState()));
 store.subscribe(() => {
 	const state = store.getState();
 	startFastatic(state);
@@ -36,4 +34,3 @@ ipcRenderer.on('stop-fastatic', (event, args) => {
 	store.dispatch({ type: 'SHOW_RESULT' });
 });
 
-module.exports = store;
