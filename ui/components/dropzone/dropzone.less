@@ -1,0 +1,24 @@
+.dropzone {
+	position: relative;
+	border: 4px dashed blue;
+	width: 45%;
+	height: 90%;
+	transition: border-color 0.5s ease;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 20px;
+}
+
+.dropzone.dropzone--hovering {
+	border: 4px dashed lightblue;
+}
+
+.dropzone.dropzone--is-file{
+	border: 4px dashed red;
+}
+
+.dropzone__message {
+	text-align: center;
+	word-wrap: break-word;
+}

@@ -4,6 +4,7 @@
   "description": "A Graphical User Interface for fastatic",
   "main": "main.js",
   "scripts": {
+    "prestart": "lessc ui/styles.less ui/styles.css",
     "start": "riot ui/components ui/compiled-tags.js --ext html && electron .",
     "lint": "eslint"
   },
@@ -37,6 +38,7 @@
     "eslint-plugin-html": "1.5.2",
     "eslint-plugin-import": "1.15.0",
     "eslint-plugin-jsx-a11y": "2.2.2",
-    "eslint-plugin-react": "6.2.2"
+    "eslint-plugin-react": "6.2.2",
+    "less": "2.7.1"
   }
 }
