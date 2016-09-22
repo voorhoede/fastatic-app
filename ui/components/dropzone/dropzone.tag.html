@@ -2,7 +2,8 @@
 	class="{
 		dropzone:true,
 		dropzone--hovering:opts.state.hovering,
-		dropzone--is-file:opts.state.isFile
+		dropzone--is-file:opts.state.isFile,
+		dropzone--dropped:opts.state.path && !opts.state.isFile,
 	}"
 	data-dropzone="{ opts.name }"
 >

@@ -1,6 +1,8 @@
+@import (once) '../../_variables';
+
 .dropzone {
 	position: relative;
-	border: 4px dashed blue;
+	border: 4px dashed @grey;
 	width: 45%;
 	height: 90%;
 	transition: border-color 0.5s ease;
@@ -11,11 +13,15 @@
 }
 
 .dropzone.dropzone--hovering {
-	border: 4px dashed lightblue;
+	border: 4px dashed @indigo;
 }
 
-.dropzone.dropzone--is-file{
-	border: 4px dashed red;
+.dropzone.dropzone--is-file {
+	border: 4px dashed @red;
+}
+
+.dropzone.dropzone--dropped {
+	border: 4px dashed @teal;
 }
 
 .dropzone__message {

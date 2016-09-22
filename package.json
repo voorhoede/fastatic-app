@@ -4,8 +4,8 @@
   "description": "A Graphical User Interface for fastatic",
   "main": "main.js",
   "scripts": {
-    "prestart": "lessc ui/styles.less ui/styles.css",
-    "start": "riot ui/components ui/compiled-tags.js --ext html && electron .",
+    "prestart": "lessc ui/styles.less ui/styles.css & riot ui/components ui/compiled-tags.js --ext html",
+    "start": "electron .",
     "lint": "eslint"
   },
   "repository": {
