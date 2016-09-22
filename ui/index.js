@@ -8,7 +8,7 @@ store.subscribe(() => {
 
 function startFastatic(state) {
 	const srcIsNotAFile = !state.dropzones.src.isFile;
-	const destIsNotAFile = !state.dropzones.src.isFile;
+	const destIsNotAFile = !state.dropzones.dest.isFile;
 	const srcHasAPath = !!state.dropzones.src.path;
 	const destHasAPath = !!state.dropzones.dest.path;
 	const fastaticIsRunning = state.fastatic.isRunning;
