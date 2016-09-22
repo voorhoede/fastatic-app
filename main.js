@@ -84,5 +84,5 @@ ipcMain.on('run-fastatic', (event, args) => {
 			src: './examples/microsoft.github.io-master',
 			dest: 'build/examples/microsoft'
 		});
-	}, 500);
+	}, 2000);
 });
