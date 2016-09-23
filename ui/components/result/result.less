@@ -6,8 +6,53 @@
 	background: @greylighter;
 	transform: translateY(100%);
 	transition: transform 0.25s ease;
+	padding: 3rem;
 }
 
 .result--visible {
 	transform: translateY(0%);
+}
+
+.result__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.result__close {
+	height: 100%;
+	border: 1px solid black;
+	background: transparent;
+	font-family: "Ubuntu Mono";
+	font-size: 1rem;
+}
+
+.result__table {
+	width: 100%;
+	border-spacing: 0px;
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.result__table-cell {
+	padding: 0.5rem;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	text-align: right;
+
+	&:first-of-type {
+		text-align: left;
+	}
+}
+
+.result__table-row--header {
+	color: @indigo;
+}
+
+.result__table-row--footer {
+	font-weight: bold;
+}
+
+.result__saving-value {
+	color: @teal;
 }

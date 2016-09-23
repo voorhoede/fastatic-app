@@ -3,49 +3,54 @@
 		result:true,
 		result--visible:opts.show
 	}">
-	<h2>Result</h2>
-	<button onclick="{ opts.hideCallback }">Close</button>
-	<table>
+	<div class="result__header">
+		<h2 class="result__title">Result</h2>
+		<button class="result__close" onclick="{ opts.hideCallback }">Close</button>
+	</div>
+	<table class="result__table">
 		<thead>
-			<tr>
-				<td>Filetype</td>
-				<td>Original size</td>
-				<td>Optimised size</td>
-				<td>Saving</td>
+			<tr class="result__table-row result__table-row--header">
+				<td class="result__table-cell">Filetype</td>
+				<td class="result__table-cell">Original size</td>
+				<td class="result__table-cell">Optimised size</td>
+				<td class="result__table-cell">Saving</td>
 			</tr>
 		</thead>
 		<tbody>
 			<tr
-			each="{ type, srcValue in opts.srcResult }"
-			if="{ srcValue - parent.opts.destResult[type] }">
-				<td>{ type }</td>
-				<td>{ filesize(srcValue) }</td>
-				<td>{ filesize(parent.opts.destResult[type]) }</td>
-				<td>{ filesize(srcValue - parent.opts.destResult[type]) } - ({percent(srcValue - parent.opts.destResult[type], [srcValue], {suffix: '%'})})</td>
+				class="result__table-row"
+				each="{ type, srcValue in opts.srcResult }"
+				if="{ srcValue - parent.opts.destResult[type] }">
+				<td class="result__table-cell">{ type }</td>
+				<td class="result__table-cell">{ filesize(srcValue) }</td>
+				<td class="result__table-cell">{ filesize(parent.opts.destResult[type]) }</td>
+				<td class="result__table-cell result__table-cell--footer">{ filesize(srcValue - parent.opts.destResult[type]) } - (<span class="result__saving-value">{percent(srcValue - parent.opts.destResult[type], [srcValue], {suffix: '%'})}</span>	)</td>
 			</tr>
 		</tbody>
 		<tfoot>
-			<tr>
-				<td>Total</td>
-				<td>{ filesize(srcTotal) }</td>
-				<td>{ filesize(destTotal) }</td>
-				<td>{ filesize(srcTotal - destTotal)} - ({percent(srcTotal - destTotal, [srcTotal], {suffix: '%'})}) }</td>
+			<tr class="result__table-row result__table-row--footer">
+				<td class="result__table-cell">Total</td>
+				<td class="result__table-cell">{ filesize(srcTotal) }</td>
+				<td class="result__table-cell">{ filesize(destTotal) }</td>
+				<td class="result__table-cell">{ filesize(srcTotal - destTotal)} - (
+					<span class="result__saving-value">{percent(srcTotal - destTotal, [srcTotal], {suffix: '%'})}</span>
+					)</td>
 			</tr>
 		</tfoot>
 	</table>
+
+	<p>Done. Optimised static files in: { opts.destFolder }</p>
 
 	<script>
 		this.filesize = require('filesize');
 		this.percent = require('calc-percent');
 
 		this.on('update', () => {
-			this.srcTotal = Object.keys(this.opts.srcResult || {}).reduce((total, type) => {
-				return total + this.opts.srcResult[type];
-			}, 0);
+			this.srcTotal = Object.keys(this.opts.srcResult || {})
+				.reduce((total, type) => total + this.opts.srcResult[type], 0);
 
-			this.destTotal = Object.keys(this.opts.destResult || {}).reduce((total, type) => {
-				return total + this.opts.destResult[type];
-			}, 0);
+			this.destTotal = Object.keys(this.opts.destResult || {})
+				.reduce((total, type) => total + this.opts.destResult[type], 0);
 		});
 	</script>
 </fast-result>
