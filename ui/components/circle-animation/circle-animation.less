@@ -1,0 +1,29 @@
+@keyframes circleanimation {
+	0% {
+		stroke-dasharray: 222 30;
+		stroke-dashoffset: 0;
+		transform: rotate(0deg);
+	}
+
+	50% {
+		stroke-dasharray: 30 222;
+		stroke-dashoffset: 0;
+		transform: rotate(720deg);
+	}
+
+	100% {
+		stroke-dasharray: 222 30;
+		stroke-dashoffset: 0;
+		transform: rotate(1440deg);
+	}
+}
+
+.circle-animation {
+	circle {
+		transform-origin:center center;
+		stroke-dasharray: 126;
+		stroke-dashoffset: 0;
+
+		animation: circleanimation 5s infinite linear;
+	}
+}
