@@ -51,13 +51,14 @@ function formatError(error) {
 	const { cwd, fileName } = error || {};
 	const { line, col, message } = error.cause || {};
 	const where = (cwd && fileName) ? `${path.relative(cwd, fileName)}:${line}:${col}` : null;
+	const stack = (error.stack) ? error.stack.split('\n    ').slice(1).join('\n\t ') : '';
 
 	const format = {
 		name: error.name || 'Parser Error',
 		parser: error.parser,
 		plugin: error.plugin,
 		message: message || error.message,
-		where: where || error.stack.split('\n    ').slice(1).join('\n\t '),
+		where: where || stack,
 		show: true
 	};
 

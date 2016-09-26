@@ -70,7 +70,7 @@ ipcMain.on('run-fastatic', (event, args) => {
 	fastatic({ src, dest })
 		.then((data) => {
 			data.dest = args.dest;
-			ncp(`${userData}/fastatic-working-folder`, args.dest)
+			return ncp(`${userData}/fastatic-working-folder`, args.dest)
 				.then(() => event.sender.send('stop-fastatic', data))
 				.then(() => remove(`${userData}/fastatic-working-folder`));
 		})
