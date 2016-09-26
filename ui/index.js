@@ -37,8 +37,8 @@ ipcRenderer.on('stop-fastatic', (event, args) => {
 
 ipcRenderer.on('stop-fastatic-with-errors', (event, args) => {
 	resetUI();
-
-	store.dispatch({ type: 'ADD_ERRORS', errors: args.map(err => formatError(err)) });
+	const errors = (args.length) ? args : [new Error('Something went wrong with the fastatic process')];
+	store.dispatch({ type: 'ADD_ERRORS', errors: errors.map(err => formatError(err)) });
 	store.dispatch({ type: 'SHOW_ERRORS' });
 });
 
@@ -53,7 +53,7 @@ function formatError(error) {
 	const where = (cwd && fileName) ? `${path.relative(cwd, fileName)}:${line}:${col}` : null;
 
 	const format = {
-		name: error.name,
+		name: error.name || 'Parser Error',
 		parser: error.parser,
 		plugin: error.plugin,
 		message: message || error.message,

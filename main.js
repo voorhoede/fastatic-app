@@ -1,4 +1,8 @@
+const fastatic = require('fastatic');
 const electron = require('electron');
+const promisify = require('bluebird').promisify;
+const ncp = promisify(require('ncp'));
+const remove = promisify(require('rimraf'));
 const devtoolsInstaller = require('electron-devtools-installer');
 const { REDUX_DEVTOOLS } = require('electron-devtools-installer');
 // Module to control application life.
@@ -59,144 +63,19 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 ipcMain.on('run-fastatic', (event, args) => {
-	setTimeout(() => {
-		// event.sender.send('stop-fastatic', {
-		// 	filesize: {
-		// 		src: {
-		// 			md: 13749,
-		// 			png: 127404,
-		// 			css: 244080,
-		// 			json: 10375,
-		// 			html: 17954,
-		// 			js: 3581,
-		// 			txt: 1070
-		// 		},
-		// 		dest: {
-		// 			md: 13749,
-		// 			png: 107499,
-		// 			css: 172528,
-		// 			json: 8219,
-		// 			html: 13655,
-		// 			js: 1490,
-		// 			txt: 1070
-		// 		}
-		// 	},
-		// 	src: './examples/microsoft.github.io-master',
-		// 	dest: 'build/examples/microsoft'
-		// });
+	const userData = app.getPath('userData');
+	const src = args.src;
+	const dest = `${userData}/fastatic-working-folder`;
 
-		event.sender.send('stop-fastatic-with-errors',
-			[{
-				name: 'GulpUglifyError',
-				cause: {
-					message: 'SyntaxError: Unexpected character \'`\'',
-					filename: 'js/main.js',
-					line: 2,
-					col: 11,
-					pos: 73,
-					stack: 'Error\n    at new JS_Parse_Error (eval at <anonymous> (/Volumes/Voorhoede/www/internal-projects/fastatic/node_modules/gulp-uglify/node_modules/uglify-js/tools/node.js:28:1), <anonymous>:1545:18)'
-				},
-				plugin: 'gulp-uglify',
-				fileName: '/Volumes/Voorhoede/www/internal-projects/fastatic/.fastatic-temp/dest/js/main.js',
-				showStack: false,
-				parser: 'jsmin',
-				cwd: './.fastatic-temp/dest'
-			},
-			{
-				name: 'GulpUglifyError',
-				cause: {
-					message: 'SyntaxError: Unexpected character \'`\'',
-					filename: 'js/main.js',
-					line: 2,
-					col: 11,
-					pos: 73,
-					stack: 'Error\n    at new JS_Parse_Error (eval at <anonymous> (/Volumes/Voorhoede/www/internal-projects/fastatic/node_modules/gulp-uglify/node_modules/uglify-js/tools/node.js:28:1), <anonymous>:1545:18)'
-				},
-				plugin: 'gulp-uglify',
-				fileName: '/Volumes/Voorhoede/www/internal-projects/fastatic/.fastatic-temp/dest/js/main.js',
-				showStack: false,
-				parser: 'jsmin',
-				cwd: './.fastatic-temp/dest'
-			},
-			{
-				name: 'GulpUglifyError',
-				cause: {
-					message: 'SyntaxError: Unexpected character \'`\'',
-					filename: 'js/main.js',
-					line: 2,
-					col: 11,
-					pos: 73,
-					stack: 'Error\n    at new JS_Parse_Error (eval at <anonymous> (/Volumes/Voorhoede/www/internal-projects/fastatic/node_modules/gulp-uglify/node_modules/uglify-js/tools/node.js:28:1), <anonymous>:1545:18)'
-				},
-				plugin: 'gulp-uglify',
-				fileName: '/Volumes/Voorhoede/www/internal-projects/fastatic/.fastatic-temp/dest/js/main.js',
-				showStack: false,
-				parser: 'jsmin',
-				cwd: './.fastatic-temp/dest'
-			},
-			{
-				name: 'GulpUglifyError',
-				cause: {
-					message: 'SyntaxError: Unexpected character \'`\'',
-					filename: 'js/main.js',
-					line: 2,
-					col: 11,
-					pos: 73,
-					stack: 'Error\n    at new JS_Parse_Error (eval at <anonymous> (/Volumes/Voorhoede/www/internal-projects/fastatic/node_modules/gulp-uglify/node_modules/uglify-js/tools/node.js:28:1), <anonymous>:1545:18)'
-				},
-				plugin: 'gulp-uglify',
-				fileName: '/Volumes/Voorhoede/www/internal-projects/fastatic/.fastatic-temp/dest/js/main.js',
-				showStack: false,
-				parser: 'jsmin',
-				cwd: './.fastatic-temp/dest'
-			},
-			{
-				name: 'GulpUglifyError',
-				cause: {
-					message: 'SyntaxError: Unexpected character \'`\'',
-					filename: 'js/main.js',
-					line: 2,
-					col: 11,
-					pos: 73,
-					stack: 'Error\n    at new JS_Parse_Error (eval at <anonymous> (/Volumes/Voorhoede/www/internal-projects/fastatic/node_modules/gulp-uglify/node_modules/uglify-js/tools/node.js:28:1), <anonymous>:1545:18)'
-				},
-				plugin: 'gulp-uglify',
-				fileName: '/Volumes/Voorhoede/www/internal-projects/fastatic/.fastatic-temp/dest/js/main.js',
-				showStack: false,
-				parser: 'jsmin',
-				cwd: './.fastatic-temp/dest'
-			},
-			{
-				name: 'GulpUglifyError',
-				cause: {
-					message: 'SyntaxError: Unexpected character \'`\'',
-					filename: 'js/main.js',
-					line: 2,
-					col: 11,
-					pos: 73,
-					stack: 'Error\n    at new JS_Parse_Error (eval at <anonymous> (/Volumes/Voorhoede/www/internal-projects/fastatic/node_modules/gulp-uglify/node_modules/uglify-js/tools/node.js:28:1), <anonymous>:1545:18)'
-				},
-				plugin: 'gulp-uglify',
-				fileName: '/Volumes/Voorhoede/www/internal-projects/fastatic/.fastatic-temp/dest/js/main.js',
-				showStack: false,
-				parser: 'jsmin',
-				cwd: './.fastatic-temp/dest'
-			},
-			{
-				name: 'GulpUglifyError',
-				cause: {
-					message: 'SyntaxError: Unexpected character \'`\'',
-					filename: 'js/main.js',
-					line: 2,
-					col: 11,
-					pos: 73,
-					stack: 'Error\n    at new JS_Parse_Error (eval at <anonymous> (/Volumes/Voorhoede/www/internal-projects/fastatic/node_modules/gulp-uglify/node_modules/uglify-js/tools/node.js:28:1), <anonymous>:1545:18)'
-				},
-				plugin: 'gulp-uglify',
-				fileName: '/Volumes/Voorhoede/www/internal-projects/fastatic/.fastatic-temp/dest/js/main.js',
-				showStack: false,
-				parser: 'jsmin',
-				cwd: './.fastatic-temp/dest'
-			}]);
-	}, 100);
+	fastatic({ src, dest })
+		.then((data) => {
+			data.dest = args.dest;
+			ncp(`${userData}/fastatic-working-folder`, args.dest)
+				.then(() => event.sender.send('stop-fastatic', data))
+				.then(() => remove(`${userData}/fastatic-working-folder`));
+		})
+		.catch((err) => {
+			remove(`${userData}/fastatic-working-folder`)
+				.then(() => event.sender.send('stop-fastatic-with-errors', err));
+		});
 });
