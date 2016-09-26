@@ -20,6 +20,32 @@ const errorlist = (state = {}, action) => {
 				show: false
 			});
 
+		case 'EXPAND_ERRORS':
+			return Object.assign(state, {
+				errors: state.errors.map((error) => {
+					error.show = true;
+					return error;
+				})
+			});
+
+		case 'COLLAPSE_ERRORS':
+			return Object.assign(state, {
+				errors: state.errors.map((error) => {
+					error.show = false;
+					return error;
+				})
+			});
+
+		case 'TOGGLE_ERROR':
+			return Object.assign(state, {
+				errors: state.errors.map((error, index) => {
+					if (index === action.index) {
+						error.show = !error.show;
+					}
+					return error;
+				})
+			});
+
 		default:
 			return state;
 	}

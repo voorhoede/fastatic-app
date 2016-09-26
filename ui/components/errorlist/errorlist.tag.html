@@ -10,7 +10,11 @@
 
 	<section class="errorlist__list-container">
 		<ol class="errorlist__list">
-			<li class="errorlist__error-item" each="{ error in opts.errors }">
+			<li
+				class="errorlist__error-item"
+				onclick="{ parent.opts.toggleCallback }"
+				each="{ error, index in opts.errors }"
+				data-index="{ index }">
 				<ul class="errorlist__error-property-list">
 					<li><span class="errorlist__item-key">name</span>: { error.name }</li>
 					<li if="{ error.show }"><span class="errorlist__item-key">parser</span>: { error.parser }</li>
@@ -23,6 +27,15 @@
 	</section>
 
 	<footer class="errorlist__footer">
-		<button>Toggle all</button>
+		<button
+			if="{ opts.errors.length > 1 }"
+			onclick="{ opts.expandAllCallback }">
+			Expand all
+		</button>
+		<button
+			if="{ opts.errors.length > 1 }"
+			onclick="{ opts.collapseAllCallback }">
+			Collapse all
+		</button>
 	</footer>
 </fast-errorlist>

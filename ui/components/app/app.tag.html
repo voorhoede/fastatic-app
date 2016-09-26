@@ -22,7 +22,10 @@
 	<fast-errorlist
 		show="{ opts.store.getState().errorlist.show }"
 		errors="{ opts.store.getState().errorlist.errors }"
-		hide-callback="{ hideResult }"
+		hide-callback="{ hideErrors }"
+		expand-all-callback="{ expandErrors }"
+		collapse-all-callback="{ collapseErrors }"
+		toggle-callback="{ toggleError }"
 	></fast-errorlist>
 
 	<script>
@@ -35,6 +38,19 @@
 		this.hideErrors = () => {
 			this.opts.store.dispatch({ type: 'HIDE_ERRORS' });
 			this.opts.store.dispatch({ type: 'RESET_ERRORS' });
+		};
+
+		this.expandErrors = () => {
+			this.opts.store.dispatch({ type: 'EXPAND_ERRORS' });
+		};
+
+		this.collapseErrors = () => {
+			this.opts.store.dispatch({ type: 'COLLAPSE_ERRORS' });
+		};
+
+		this.toggleError = (event) => {
+			const index = parseInt(event.target.dataset.index, 10);
+			this.opts.store.dispatch({ type: 'TOGGLE_ERROR', index });
 		};
 	</script>
 </fast-app>
