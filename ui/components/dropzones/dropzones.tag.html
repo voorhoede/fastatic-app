@@ -1,11 +1,13 @@
 <fast-dropzones class="dropzones">
 	<fast-dropzone
 		name="src"
+		show="{ true }"
 		state="{ opts.state.src }"
 	></fast-dropzone>
 
 	<fast-dropzone
 		name="dest"
+		show="{ !!opts.state.src.path }"
 		state="{ opts.state.dest }"
 		sync-handler="{ syncPaths }"
 		show-sync-button="{ !!opts.state.src.path && opts.state.src.path !== opts.state.dest.path }"

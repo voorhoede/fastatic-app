@@ -1,6 +1,7 @@
 <fast-dropzone
 	class="{
 		dropzone:true,
+		dropzone--show:opts.show,
 		dropzone--hovering:opts.state.hovering,
 		dropzone--is-file:opts.state.isFile,
 		dropzone--dropped:opts.state.path && !opts.state.isFile,
@@ -42,7 +43,5 @@
 		class="dropzone__message">
 		You dropped a file, fastatic only handles folders
 	</p>
-
-	<button if="{ opts.showSyncButton }" onclick="{ opts.syncHandler }">Same as source</button>
 
 </fast-dropzone>
