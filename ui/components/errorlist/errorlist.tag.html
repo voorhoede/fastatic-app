@@ -1,0 +1,28 @@
+<fast-errorlist
+	class="{
+		errorlist: true,
+		errorlist--visible: opts.show
+	}">
+	<header class="errorlist__header">
+		<h2 class="errorlist__title">Errors:</h2>
+		<button onclick="{ opts.hideCallback }">Close</button>
+	</header>
+
+	<section class="errorlist__list-container">
+		<ol class="errorlist__list">
+			<li class="errorlist__error-item" each="{ error in opts.errors }">
+				<ul class="errorlist__error-property-list">
+					<li><span class="errorlist__item-key">name</span>: { error.name }</li>
+					<li if="{ error.show }"><span class="errorlist__item-key">parser</span>: { error.parser }</li>
+					<li if="{ error.show }"><span class="errorlist__item-key">plugin</span>: { error.plugin }</li>
+					<li if="{ error.show }"><span class="errorlist__item-key">message</span>: { error.message }</li>
+					<li if="{ error.show }"><span class="errorlist__item-key">where</span>: { error.where }</li>
+				</ul>
+			</li>
+		</ol>
+	</section>
+
+	<footer class="errorlist__footer">
+		<button>Toggle all</button>
+	</footer>
+</fast-errorlist>

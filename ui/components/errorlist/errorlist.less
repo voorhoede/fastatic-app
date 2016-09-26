@@ -1,0 +1,52 @@
+.errorlist {
+	position: absolute;
+	width: 100%;
+	height: ~'calc(100% - 37px)';
+	margin-top: 37px;
+	background: @greylighter;
+	transform: translateY(100%);
+	transition: transform 0.25s ease;
+	padding: 3rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.errorlist--visible {
+	transform: translateY(0%);
+}
+
+.errorlist__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.errorlist__list-container {
+	flex: 1;
+	overflow: auto;
+}
+
+.errorlist__list {
+	padding: 0;
+}
+
+.errorlist__error-item {
+	padding: 1rem;
+}
+
+.errorlist__error-item:hover {
+	background-color: @greylight;
+}
+
+.errorlist__error-property-list {
+	list-style: none;
+	padding: 0;
+}
+
+.errorlist__item-key {
+	color: @red;
+}
+
+.errorlist__footer {
+	margin-top: 1rem;
+}

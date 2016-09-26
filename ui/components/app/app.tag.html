@@ -19,11 +19,22 @@
 		hide-callback="{ hideResult }"
 	></fast-result>
 
+	<fast-errorlist
+		show="{ opts.store.getState().errorlist.show }"
+		errors="{ opts.store.getState().errorlist.errors }"
+		hide-callback="{ hideResult }"
+	></fast-errorlist>
+
 	<script>
 
 		this.hideResult = () => {
 			this.opts.store.dispatch({ type: 'HIDE_RESULT' });
 			this.opts.store.dispatch({ type: 'RESET_RESULT' });
+		};
+
+		this.hideErrors = () => {
+			this.opts.store.dispatch({ type: 'HIDE_ERRORS' });
+			this.opts.store.dispatch({ type: 'RESET_ERRORS' });
 		};
 	</script>
 </fast-app>

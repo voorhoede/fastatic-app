@@ -18,6 +18,10 @@ module.exports = function getInitialState() {
 		result: {
 			show: false,
 			output: {}
+		},
+		errorlist: {
+			show: false,
+			errors: []
 		}
 	};
 };
