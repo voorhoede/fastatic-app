@@ -3,24 +3,22 @@
 .dropzone {
 	position: relative;
 	border: 1px dashed @grey;
-	height: 90%;
 	width: 100%;
 	display: none;
 	flex-direction: column;
 	justify-content: center;
 	padding: 20px;
 	border-radius: 1rem;
-	transition: box-shadow 0.5s ease;
-	flex: 1;
+	transition: all 0.5s ease;
 	margin: 1rem;
-}
-
-.dropzone[data-dropzone="dest"] {
-	flex: 0;
 }
 
 .dropzone.dropzone--show {
 	display: flex;
+}
+
+.dropzone.dropzone--is-expanded {
+	flex: 1;
 }
 
 .dropzone.dropzone--hovering {

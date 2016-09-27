@@ -4,13 +4,16 @@
 		show="{ true }"
 		state="{ opts.state.src }"
 		is-disabled="{ opts.isRunning }"
+		is-expanded="{ !opts.state.src.path && !opts.state.src.isFile }"
 		data-can-drop="{ !opts.isRunning }"
 	></fast-dropzone>
 
 	<fast-dropzone
 		name="dest"
+		show="{ opts.state.src.path && !opts.state.src.isFile }"
 		state="{ opts.state.dest }"
 		sync-handler="{ syncPaths }"
+		is-expanded="{ opts.state.src.path && !opts.state.src.isFile }"
 		show-sync-button="{ !!opts.state.src.path && opts.state.src.path !== opts.state.dest.path }"
 		data-can-drop="{ true }"
 	></fast-dropzone>
@@ -61,9 +64,9 @@
 				value: false
 			};
 
-			if (event.target.dataset.canDrop === 'true') {
+			// if (event.target.dataset.canDrop === 'true') {
 				tag.opts.store.dispatch(action);
-			}
+			// }
 		}
 
 		function onDragEnter(event) {
@@ -74,9 +77,9 @@
 				value: true
 			};
 
-			if (event.target.dataset.canDrop === 'true') {
+			// if (event.target.dataset.canDrop === 'true') {
 				tag.opts.store.dispatch(action);
-			}
+			// }
 		}
 
 		function onDrop(event) {
@@ -100,11 +103,11 @@
 				value: file.path
 			};
 
-			if (event.target.dataset.canDrop === 'true') {
+			// if (event.target.dataset.canDrop === 'true') {
 				tag.opts.store.dispatch(actionHover);
 				tag.opts.store.dispatch(actionIsFile);
 				tag.opts.store.dispatch(actionPath);
-			}
+			// }
 		}
 	</script>
 </fast-dropzones>
