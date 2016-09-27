@@ -6,25 +6,6 @@ store.subscribe(() => {
 	const state = store.getState();
 });
 
-ipcRenderer.on('stop-fastatic', (event, args) => {
-	resetUI();
-
-	store.dispatch({ type: 'ADD_RESULT', output: args });
-	store.dispatch({ type: 'SHOW_RESULT' });
-});
-
-ipcRenderer.on('stop-fastatic-with-errors', (event, args) => {
-	resetUI();
-	const errors = (args.length) ? args : [new Error('Something went wrong with the fastatic process')];
-	store.dispatch({ type: 'ADD_ERRORS', errors: errors.map(err => formatError(err)) });
-	store.dispatch({ type: 'SHOW_ERRORS' });
-});
-
-function resetUI() {
-	store.dispatch({ type: 'RESET_DROPZONES' });
-	store.dispatch({ type: 'STOP_FASTATIC' });
-}
-
 function formatError(error) {
 	const { cwd, fileName } = error || {};
 	const { line, col, message } = error.cause || {};
