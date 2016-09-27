@@ -79,5 +79,11 @@ ipcMain.on('run-fastatic', (event, args) => {
 	// 			.then(() => event.sender.send('stop-fastatic-with-errors', err));
 	// 	});
 
+	setTimeout(() => {
+		event.sender.send('stop-fastatic', {
+			foo: 'bar'
+		});
+	}, 3000);
+
 	console.log('src:', src);
 });

@@ -11,6 +11,16 @@ const fastatic = (state = {}, action) => {
 				isRunning: false
 			});
 
+		case 'FILES_ARE_NOT_COPIED':
+			return Object.assign(state, {
+				copiedFilesToDest: false
+			});
+
+		case 'FILES_ARE_COPIED':
+			return Object.assign(state, {
+				copiedFilesToDest: true
+			});
+
 		default:
 			return state;
 	}

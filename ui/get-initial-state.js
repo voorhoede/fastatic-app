@@ -13,7 +13,8 @@ module.exports = function getInitialState() {
 			}
 		},
 		fastatic: {
-			isRunning: false
+			isRunning: false,
+			copiedFilesToDest: true
 		},
 		result: {
 			show: false,
