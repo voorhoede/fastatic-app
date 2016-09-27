@@ -1,4 +1,4 @@
-const fastatic = require('fastatic');
+// const fastatic = require('fastatic');
 const electron = require('electron');
 const promisify = require('bluebird').promisify;
 const ncp = promisify(require('ncp'));
@@ -67,15 +67,17 @@ ipcMain.on('run-fastatic', (event, args) => {
 	const src = args.src;
 	const dest = `${userData}/fastatic-working-folder`;
 
-	fastatic({ src, dest })
-		.then((data) => {
-			data.dest = args.dest;
-			return ncp(`${userData}/fastatic-working-folder`, args.dest)
-				.then(() => event.sender.send('stop-fastatic', data))
-				.then(() => remove(`${userData}/fastatic-working-folder`));
-		})
-		.catch((err) => {
-			remove(`${userData}/fastatic-working-folder`)
-				.then(() => event.sender.send('stop-fastatic-with-errors', err));
-		});
+	// fastatic({ src, dest })
+	// 	.then((data) => {
+	// 		data.dest = args.dest;
+	// 		return ncp(`${userData}/fastatic-working-folder`, args.dest)
+	// 			.then(() => event.sender.send('stop-fastatic', data))
+	// 			.then(() => remove(`${userData}/fastatic-working-folder`));
+	// 	})
+	// 	.catch((err) => {
+	// 		remove(`${userData}/fastatic-working-folder`)
+	// 			.then(() => event.sender.send('stop-fastatic-with-errors', err));
+	// 	});
+
+	console.log('src:', src);
 });
