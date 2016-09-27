@@ -38,6 +38,12 @@
 	box-shadow: inset 0px 0px 25px 0px @teallight;
 }
 
+.dropzone.dropzone--disabled {
+	border: 1px dashed @grey;
+	box-shadow: inset 0px 0px 25px 0px @greylight;
+	color: @grey;
+}
+
 .dropzone__message {
 	text-align: center;
 	word-wrap: break-word;
@@ -48,4 +54,10 @@
 	word-wrap: initial;
 	direction: rtl;
 	overflow: hidden;
+}
+
+.dropzone fast-circle-animation {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 }

@@ -4,6 +4,7 @@
 		dropzone--show:opts.show,
 		dropzone--hovering:opts.state.hovering,
 		dropzone--is-file:opts.state.isFile,
+		dropzone--disabled:opts.isDisabled,
 		dropzone--dropped:opts.state.path && !opts.state.isFile,
 	}"
 	data-dropzone="{ opts.name }"
@@ -44,6 +45,8 @@
 		You dropped a file, fastatic only handles folders
 	</p>
 
-	<fast-circle-animation if="{ parent.opts.showSpinner }"></fast-circle-animation>
+	<fast-circle-animation
+		if="{ parent.opts.isDisabled }">
+	</fast-circle-animation>
 
 </fast-dropzone>
