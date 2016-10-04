@@ -7,36 +7,10 @@ module.exports = function getInitialState() {
 			resultViewDisplay: false,
 			errorViewDisplay: false,
 		},
-		fastatic: {
-			isRunning: false,
-			copiedFilesToDest: true
-		},
-		result: {
-			show: false,
-			output: {
-				filesize: {
-					src: {
-						md: 13749,
-						png: 127404,
-						css: 244080,
-						json: 10375,
-						html: 17954,
-						js: 3581,
-						txt: 1070
-					},
-					dest: {
-						md: 13749,
-						png: 107499,
-						css: 172528,
-						json: 8219,
-						html: 13655,
-						js: 1490,
-						txt: 1070
-					}
-				},
-				src: './examples/microsoft.github.io-master',
-				dest: 'build/examples/microsoft'
-			}
+		dropzoneSrc: {
+			hover: false,
+			isFile: false,
+			path: ''
 		},
 		errorlist: {
 			show: false,
@@ -152,6 +126,37 @@ module.exports = function getInitialState() {
 				parser: 'jsmin',
 				cwd: './.fastatic-temp/dest'
 			}]
+		},
+		fastatic: {
+			isRunning: false,
+			copiedFilesToDest: true
+		},
+		result: {
+			show: false,
+			output: {
+				filesize: {
+					src: {
+						md: 13749,
+						png: 127404,
+						css: 244080,
+						json: 10375,
+						html: 17954,
+						js: 3581,
+						txt: 1070
+					},
+					dest: {
+						md: 13749,
+						png: 107499,
+						css: 172528,
+						json: 8219,
+						html: 13655,
+						js: 1490,
+						txt: 1070
+					}
+				},
+				src: './examples/microsoft.github.io-master',
+				dest: 'build/examples/microsoft'
+			}
 		}
 	};
 };
