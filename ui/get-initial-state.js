@@ -1,5 +1,12 @@
 module.exports = function getInitialState() {
 	return {
+		app: {
+			activeView: 'src',
+			srcViewDisplay: true,
+			destViewDisplay: false,
+			resultViewDisplay: false,
+			errorViewDisplay: false,
+		},
 		dropzones: {
 			src: {
 				isFile: false,
