@@ -1,30 +1,30 @@
-<fast-app2 class="app2">
+<fast-app class="app">
 	<fast-header></fast-header>
 
 	<section>
 		<fast-dropzone-src
 			class="{
-				app2__view: true,
-				app2__view--display:opts.store.getState().app.srcViewDisplay,
-				app2__view--active:(opts.store.getState().app.activeView === 'src')
+				app__view: true,
+				app__view--display:opts.store.getState().app.srcViewDisplay,
+				app__view--active:(opts.store.getState().app.activeView === 'src')
 			}"
 			display="{ opts.store.getState().app.srcViewDisplay }"
 		></fast-dropzone-src>
 
 		<fast-dropzone-dest
 			class="{
-				app2__view:true,
-				app2__view--display:opts.store.getState().app.destViewDisplay,
-				app2__view--active:(opts.store.getState().app.activeView === 'dest')
+				app__view:true,
+				app__view--display:opts.store.getState().app.destViewDisplay,
+				app__view--active:(opts.store.getState().app.activeView === 'dest')
 			}"
 			display="{ opts.store.getState().app.destViewDisplay }"
 		></fast-dropzone-dest>
 
 		<fast-result
 			class="{
-				app2__view:true,
-				app2__view--display:opts.store.getState().app.resultViewDisplay,
-				app2__view--active:(opts.store.getState().app.activeView === 'result')
+				app__view:true,
+				app__view--display:opts.store.getState().app.resultViewDisplay,
+				app__view--active:(opts.store.getState().app.activeView === 'result')
 			}"
 			display="{ opts.store.getState().app.resultViewDisplay }"
 			src-result="{ opts.store.getState().result.output.filesize.src }"
@@ -34,9 +34,9 @@
 
 		<fast-errorlist
 			class="{
-				app2__view:true,
-				app2__view--display:opts.store.getState().app.errorViewDisplay,
-				app2__view--active:(opts.store.getState().app.activeView === 'error')
+				app__view:true,
+				app__view--display:opts.store.getState().app.errorViewDisplay,
+				app__view--active:(opts.store.getState().app.activeView === 'error')
 			}"
 			display="{ opts.store.getState().app.errorViewDisplay }"
 			errors="{ opts.store.getState().errorlist.errors }"
@@ -45,4 +45,4 @@
 			toggle-callback="{ toggleError }"
 		></fast-errorlist>
 	</section>
-</fast-app2>
+</fast-app>

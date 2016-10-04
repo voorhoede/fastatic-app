@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
-		<fast-app2></fast-app2>
+		<fast-app></fast-app>
 	</body>
 
 	<script>
@@ -16,7 +16,7 @@
 		require('./index');
 		require('./compiled-tags.js');
 
-		riot.mount('fast-app2', { store });
+		riot.mount('fast-app', { store });
 		store.subscribe(() => riot.update());
 	</script>
 </html>
