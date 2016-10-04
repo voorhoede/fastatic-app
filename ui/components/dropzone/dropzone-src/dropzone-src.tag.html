@@ -4,4 +4,63 @@
 		<p class="dropzone__message">Your <strong>source</strong> folder: path/to/folder</p>
 	</section>
 
+	<script>
+		const fs = require('fs');
+
+		const tag = this;
+		tag.name = 'src';
+
+		tag.on('mount', () => {
+			const dropzone = tag.root.querySelector('.dropzone');
+			console.log('dropzone:', dropzone);
+			dropzone.ondragover = preventDefault;
+			dropzone.ondragleave = onDragLeave;
+			dropzone.ondragenter = onDragEnter;
+			dropzone.ondrop = onDrop;
+		});
+
+		function preventDefault(event) {
+			event.preventDefault();
+		}
+
+		function onDragLeave() {
+			const action = {
+				type: `dropzone_${tag.name}_hovering`.toUpperCase(),
+				value: false
+			};
+			tag.opts.store.dispatch(action);
+		}
+
+		function onDragEnter() {
+			const action = {
+				type: `dropzone_${tag.name}_hovering`.toUpperCase(),
+				value: true
+			};
+			tag.opts.store.dispatch(action);
+		}
+
+		function onDrop(event) {
+			event.preventDefault();
+			const files = event.dataTransfer.files;
+			const file = files[0] || {};
+			const fileStats = fs.statSync(file.path);
+			const isFile = fileStats.isFile();
+			const actionHover = {
+				type: `dropzone_${tag.name}_hovering`.toUpperCase(),
+				value: false
+			};
+			const actionIsFile = {
+				type: `dropzone_${tag.name}_is_file`.toUpperCase(),
+				value: isFile
+			};
+			const actionPath = {
+				type: `dropzone_${tag.name}_path`.toUpperCase(),
+				value: file.path
+			};
+			tag.opts.store.dispatch(actionHover);
+			tag.opts.store.dispatch(actionIsFile);
+			tag.opts.store.dispatch(actionPath);
+		}
+	</script>
+
 </fast-dropzone-src>

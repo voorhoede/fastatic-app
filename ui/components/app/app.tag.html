@@ -9,6 +9,7 @@
 				app__view--active:(opts.store.getState().app.activeView === 'src')
 			}"
 			display="{ opts.store.getState().app.srcViewDisplay }"
+			store="{ opts.store }"
 		></fast-dropzone-src>
 
 		<fast-dropzone-dest

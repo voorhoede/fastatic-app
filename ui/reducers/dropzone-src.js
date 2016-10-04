@@ -1,10 +1,10 @@
 const dropzoneSrc = (state = {}, action) => {
 	switch (action.type) {
 
-		case 'DROPZONE_SRC_HOVER':
+		case 'DROPZONE_SRC_HOVERING':
 			return Object.assign(state, {
-				hover: action.value
-			});
+				hovering: action.value
+		});
 
 		case 'DROPZONE_SRC_IS_FILE':
 			return Object.assign(state, {
