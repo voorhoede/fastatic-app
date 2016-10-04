@@ -1,6 +1,6 @@
 <fast-dropzone-src>
 
-	<section class="dropzone" if="{ opts.display }">
+	<section class="dropzone" show="{ opts.display }">
 		<p class="dropzone__message">Your <strong>source</strong> folder: path/to/folder</p>
 	</section>
 
@@ -9,7 +9,6 @@
 
 		const tag = this;
 		tag.name = 'src';
-		tag.mixin(dropzone);
 
 		tag.on('mount', () => {
 			const dropElement = tag.root.querySelector('.dropzone');

@@ -7,6 +7,11 @@ module.exports = function getInitialState() {
 			resultViewDisplay: false,
 			errorViewDisplay: false,
 		},
+		dropzoneDest: {
+			hovering: false,
+			isFile: false,
+			path: ''
+		},
 		dropzoneSrc: {
 			hovering: false,
 			isFile: false,

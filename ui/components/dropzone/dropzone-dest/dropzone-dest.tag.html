@@ -1,7 +1,30 @@
 <fast-dropzone-dest>
 
-	<section class="dropzone" if="{ opts.display }">
+	<section class="dropzone" show="{ opts.display }">
 		<p class="dropzone__message">Your <strong>dest</strong> folder: /path/to/dest</p>
 	</section>
+
+	<script>
+		const dropzone = require('./components/dropzone/dropzone');
+
+		const tag = this;
+		tag.name = 'dest';
+
+		tag.on('mount', () => {
+			const dropElement = tag.root.querySelector('.dropzone');
+			debugger;
+
+			dropElement.ondragover = event => dropzone.preventDefault(event);
+			dropElement.ondragleave = () => {
+				dropzone.onDragLeave(tag.opts.store, tag.name);
+			};
+			dropElement.ondragenter = () => {
+				dropzone.onDragEnter(tag.opts.store, tag.name);
+			};
+			dropElement.ondrop = (event) => {
+				dropzone.onDrop(event, tag.opts.store, tag.name);
+			};
+		});
+	</script>
 
 </fast-dropzone-dest>
