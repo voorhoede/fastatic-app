@@ -7,18 +7,6 @@ module.exports = function getInitialState() {
 			resultViewDisplay: false,
 			errorViewDisplay: false,
 		},
-		dropzones: {
-			src: {
-				isFile: false,
-				hovering: false,
-				path: null
-			},
-			dest: {
-				isFile: false,
-				hovering: false,
-				path: null
-			}
-		},
 		fastatic: {
 			isRunning: false,
 			copiedFilesToDest: true
