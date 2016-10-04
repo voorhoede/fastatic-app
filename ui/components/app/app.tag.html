@@ -38,6 +38,7 @@
 				app__view--display:opts.store.getState().app.errorViewDisplay,
 				app__view--active:(opts.store.getState().app.activeView === 'error')
 			}"
+			store="{ opts.store }"
 			display="{ opts.store.getState().app.errorViewDisplay }"
 			errors="{ opts.store.getState().errorlist.errors }"
 			expand-all-callback="{ expandErrors }"

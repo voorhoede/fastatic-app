@@ -4,22 +4,6 @@ const { ipcRenderer } = require('electron');
 
 store.subscribe(() => {
 	const state = store.getState();
-	const srcIsNotAFile = !state.dropzones.src.isFile;
-	const srcHasAPath = !!state.dropzones.src.path;
-	const fastaticIsNotRunning = !state.fastatic.isRunning;
-	const filesAreCopied = state.fastatic.copiedFilesToDest;
-
-	// Run fastatic
-	if (srcHasAPath &&
-		srcIsNotAFile &&
-		fastaticIsNotRunning &&
-		filesAreCopied) {
-		store.dispatch({ type: 'RUN_FASTATIC' });
-		store.dispatch({ type: 'FILES_ARE_NOT_COPIED' });
-		ipcRenderer.send('run-fastatic', {
-			src: state.dropzones.src.path
-		});
-	}
 });
 
 ipcRenderer.on('stop-fastatic', (event, args) => {

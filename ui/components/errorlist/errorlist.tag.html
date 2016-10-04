@@ -10,7 +10,7 @@
 			<ol class="errorlist__list">
 				<li
 					class="errorlist__error-item"
-					onclick="{ parent.opts.toggleCallback }"
+					onclick="{ parent.toggleError }"
 					each="{ error, index in opts.errors }"
 					data-index="{ index }">
 					<ul class="errorlist__error-property-list">
@@ -27,14 +27,28 @@
 		<footer class="errorlist__footer">
 			<button
 				if="{ opts.errors.length > 1 }"
-				onclick="{ opts.expandAllCallback }">
+				onclick="{ expandErrors }">
 				Expand all
 			</button>
 			<button
 				if="{ opts.errors.length > 1 }"
-				onclick="{ opts.collapseAllCallback }">
+				onclick="{ collapseErrors }">
 				Collapse all
 			</button>
 		</footer>
 	</section>
+
+	<script>
+		this.expandErrors = () => {
+			this.opts.store.dispatch({ type: 'EXPAND_ERRORS' });
+		};
+		this.collapseErrors = () => {
+			this.opts.store.dispatch({ type: 'COLLAPSE_ERRORS' });
+		};
+		this.toggleError = (event) => {
+			const index = parseInt(event.target.dataset.index, 10);
+			this.opts.store.dispatch({ type: 'TOGGLE_ERROR', index });
+		};
+	</script>
+
 </fast-errorlist>
