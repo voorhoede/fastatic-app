@@ -9,6 +9,8 @@
 				app__view--active:(opts.store.getState().app.activeView === 'src')
 			}"
 			display="{ opts.store.getState().app.srcViewDisplay }"
+			path="{ opts.store.getState().dropzoneSrc.path }"
+			is-file="{  opts.store.getState().dropzoneSrc.isFile  }"
 			store="{ opts.store }"
 		></fast-dropzone-src>
 
@@ -19,6 +21,8 @@
 				app__view--active:(opts.store.getState().app.activeView === 'dest')
 			}"
 			display="{ opts.store.getState().app.destViewDisplay }"
+			path="{ opts.store.getState().dropzoneDest.path }"
+			src-path="{ opts.store.getState().dropzoneSrc.path }"
 			store="{ opts.store }"
 		></fast-dropzone-dest>
 

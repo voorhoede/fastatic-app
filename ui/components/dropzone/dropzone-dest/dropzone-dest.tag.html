@@ -1,7 +1,12 @@
 <fast-dropzone-dest>
 
 	<section class="dropzone" show="{ opts.display }">
-		<p class="dropzone__message">Your <strong>dest</strong> folder: /path/to/dest</p>
+
+		<p if="{ !opts.path || opts.isFile }" class="dropzone__message">Drop your <strong>destination</strong> folder here</p>
+
+		<p if="{ opts.path && !opts.isFile }" class="dropzone__message">Your <strong>destination</strong> folder: <span>{ opts.path }</span></p>
+
+		<p if="{ opts.isFile }" class="dropzone__message">Fastatic only runs on folders</p>
 	</section>
 
 	<script>
