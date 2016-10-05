@@ -32,16 +32,12 @@ const dropzone = {
 			type: `dropzone_${name}_hovering`.toUpperCase(),
 			value: false
 		};
-		const actionIsFile = {
-			type: `dropzone_${name}_is_file`.toUpperCase(),
-			value: isFile
-		};
 		const actionPath = {
 			type: `dropzone_${name}_path`.toUpperCase(),
-			value: file.path
+			path: file.path,
+			isFile
 		};
 		store.dispatch(actionHover);
-		store.dispatch(actionIsFile);
 		store.dispatch(actionPath);
 	}
 };

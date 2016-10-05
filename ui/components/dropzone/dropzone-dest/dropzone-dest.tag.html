@@ -82,8 +82,10 @@
 		};
 
 		tag.buttonHandler = (event) => {
-			tag.opts.store.dispatch({ type: 'DROPZONE_DEST_PATH', value: event.target.innerText });
-			tag.opts.store.dispatch({ type: 'DROPZONE_DEST_IS_FILE', value: false });
+			tag.opts.store.dispatch({
+				type: 'DROPZONE_DEST_PATH',
+				path: event.target.innerText,
+				isFile: false });
 		};
 
 	</script>
