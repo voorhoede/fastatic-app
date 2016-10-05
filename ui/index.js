@@ -17,9 +17,10 @@ ipcRenderer.on('destination-accepted', () => {
 });
 
 
-ipcRenderer.on('stop-fastatic', (event, args) => {
+ipcRenderer.on('fastatic-finished', (event, args) => {
 	store.dispatch({ type: 'STOP_FASTATIC' });
 	store.dispatch({ type: 'ADD_RESULT', output: args });
+	store.dispatch({ type: 'SHOW_RESULT' });
 });
 
 function formatError(error) {
