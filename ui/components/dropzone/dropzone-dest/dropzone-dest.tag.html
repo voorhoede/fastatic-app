@@ -24,16 +24,18 @@
 
 		<p class="dropzone__message">Choose from these options:</p>
 
-		<div class="dropzone-dest__button-wrapper">
+		<div
+			if="{ opts.srcPath && !opts.isFile }"
+			class="dropzone-dest__button-wrapper">
 			<button
-				if="{ opts.srcPath && !opts.isFile }"
-				class="dropzone-dest__path-button">
+				class="dropzone-dest__path-button"
+				onclick="{ buttonHandler }">
 				{ opts.srcPath + '/dest' }
 			</button>
 
 			<button
-				if="{ opts.srcPath && !opts.isFile }"
-				class="dropzone-dest__path-button">
+				class="dropzone-dest__path-button"
+				onclick="{ buttonHandler }">
 				{ formatPath(opts.srcPath) }
 			</button>
 		</div>
@@ -64,6 +66,10 @@
 		tag.formatPath = (path) => {
 			const folder = path.split('/').pop();
 			return path.replace(folder, 'dest');
+		};
+
+		tag.buttonHandler = (event) => {
+			tag.opts.store.dispatch({ type: 'DROPZONE_DEST_PATH', value: event.target.innerText });
 		};
 
 	</script>
