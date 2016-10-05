@@ -10,11 +10,23 @@
 		}"
 		show="{ opts.display }">
 
-		<p if="{ !opts.path || opts.isFile }" class="dropzone__message">Drop your <strong>source</strong> folder here</p>
+		<p
+			if="{ !opts.path || opts.isFile }"
+			class="dropzone__message">
+			Drop your <strong>source</strong> folder here
+		</p>
 
-		<p if="{ opts.path && !opts.isFile }" class="dropzone__message">Your <strong>source</strong> folder: <span>{ opts.path }</span></p>
+		<p
+			if="{ opts.path && !opts.isFile }"
+			class="dropzone__message">
+			Your <strong>source</strong> folder: <span>{ opts.path }</span>
+		</p>
 
-		<p if="{ opts.isFile }" class="dropzone__message">Fastatic only runs on folders</p>
+		<p
+			if="{ opts.isFile }"
+			class="dropzone__message dropzone__message--warning">
+			⚠️ Fastatic only runs on folders<br />({ opts.path })
+		</p>
 	</section>
 
 	<script>
