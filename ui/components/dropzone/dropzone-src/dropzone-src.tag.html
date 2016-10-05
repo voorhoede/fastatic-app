@@ -3,7 +3,10 @@
 	<section
 		class="{
 			dropzone:true,
-			dropzone--disabled: opts.isDisabled
+			dropzone--disabled: opts.isDisabled,
+			dropzone--dropped: opts.isDropped,
+			dropzone--hovering: opts.isHovering,
+			dropzone--is-file: opts.isFile
 		}"
 		show="{ opts.display }">
 

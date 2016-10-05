@@ -9,10 +9,13 @@
 				app__view--active:(opts.store.getState().app.activeView === 'src')
 			}"
 			display="{ opts.store.getState().app.srcViewDisplay }"
-			path="{ opts.store.getState().dropzoneSrc.path }"
-			is-file="{  opts.store.getState().dropzoneSrc.isFile  }"
-			store="{ opts.store }"
 			is-disabled="{ opts.store.getState().dropzoneSrc.disabled }"
+			is-disabled="{ opts.store.getState().dropzoneSrc.disabled }"
+			is-dropped="{ opts.store.getState().dropzoneSrc.path && !opts.store.getState().dropzoneSrc.isFile }"
+			is-file="{  opts.store.getState().dropzoneSrc.isFile  }"
+			is-hovering="{  opts.store.getState().dropzoneSrc.hovering  }"
+			path="{ opts.store.getState().dropzoneSrc.path }"
+			store="{ opts.store }"
 		></fast-dropzone-src>
 
 		<fast-dropzone-dest
@@ -22,11 +25,14 @@
 				app__view--active:(opts.store.getState().app.activeView === 'dest')
 			}"
 			display="{ opts.store.getState().app.destViewDisplay }"
-			path="{ opts.store.getState().dropzoneDest.path }"
-			src-path="{ opts.store.getState().dropzoneSrc.path }"
-			is-file="{  opts.store.getState().dropzoneDest.isFile  }"
-			store="{ opts.store }"
 			is-disabled="{ opts.store.getState().dropzoneDest.disabled }"
+			is-dropped="{ opts.store.getState().dropzoneDest.path && !opts.store.getState().dropzoneDest.isFile }"
+			is-file="{  opts.store.getState().dropzoneDest.isFile  }"
+			is-hovering="{  opts.store.getState().dropzoneDest.hovering  }"
+			path="{ opts.store.getState().dropzoneDest.path }"
+			src-is-file="{  opts.store.getState().dropzoneSrc.isFile }"
+			src-path="{ opts.store.getState().dropzoneSrc.path }"
+			store="{ opts.store }"
 		></fast-dropzone-dest>
 
 		<fast-result
@@ -35,10 +41,10 @@
 				app__view--display:opts.store.getState().app.resultViewDisplay,
 				app__view--active:(opts.store.getState().app.activeView === 'result')
 			}"
+			dest-folder="{ opts.store.getState().result.output.dest }"
+			dest-result="{ opts.store.getState().result.output.filesize.dest }"
 			display="{ opts.store.getState().app.resultViewDisplay }"
 			src-result="{ opts.store.getState().result.output.filesize.src }"
-			dest-result="{ opts.store.getState().result.output.filesize.dest }"
-			dest-folder="{ opts.store.getState().result.output.dest }"
 		></fast-result>
 
 		<fast-errorlist
@@ -47,11 +53,11 @@
 				app__view--display:opts.store.getState().app.errorViewDisplay,
 				app__view--active:(opts.store.getState().app.activeView === 'error')
 			}"
-			store="{ opts.store }"
+			collapse-all-callback="{ collapseErrors }"
 			display="{ opts.store.getState().app.errorViewDisplay }"
 			errors="{ opts.store.getState().errorlist.errors }"
 			expand-all-callback="{ expandErrors }"
-			collapse-all-callback="{ collapseErrors }"
+			store="{ opts.store }"
 			toggle-callback="{ toggleError }"
 		></fast-errorlist>
 	</section>
