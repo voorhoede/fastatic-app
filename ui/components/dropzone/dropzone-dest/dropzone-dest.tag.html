@@ -2,19 +2,40 @@
 
 	<section class="dropzone" show="{ opts.display }">
 
-		<p if="{ !opts.path || opts.isFile }" class="dropzone__message">Drop your <strong>destination</strong> folder here</p>
+		<p
+			if="{ !opts.path || opts.isFile }"
+			class="dropzone__message">
+			Drop your <strong>destination</strong> folder here
+		</p>
 
-		<p if="{ opts.path && !opts.isFile }" class="dropzone__message">Your <strong>destination</strong> folder: <span>{ opts.path }</span></p>
+		<p
+			if="{ opts.path && !opts.isFile }"
+			class="dropzone__message">
+			Your <strong>destination</strong> folder: <span>{ opts.path }</span>
+		</p>
 
-		<p if="{ opts.isFile }" class="dropzone__message">Fastatic only runs on folders</p>
+		<p
+			if="{ opts.isFile }"
+			class="dropzone__message">
+			Fastatic only runs on folders
+		</p>
 
 		<hr class="dropzone-dest__seperator"/>
 
 		<p class="dropzone__message">Choose from these options:</p>
 
 		<div class="dropzone-dest__button-wrapper">
-			<button class="dropzone-dest__path-button" if="{ opts.srcPath && !opts.isFile }">{ opts.srcPath + '/dest' }</button>
-			<button class="dropzone-dest__path-button" if="{ opts.srcPath && !opts.isFile }">{ formatPath(opts.srcPath) }</button>
+			<button
+				if="{ opts.srcPath && !opts.isFile }"
+				class="dropzone-dest__path-button">
+				{ opts.srcPath + '/dest' }
+			</button>
+
+			<button
+				if="{ opts.srcPath && !opts.isFile }"
+				class="dropzone-dest__path-button">
+				{ formatPath(opts.srcPath) }
+			</button>
 		</div>
 
 	</section>
@@ -27,7 +48,6 @@
 
 		tag.on('mount', () => {
 			const dropElement = tag.root.querySelector('.dropzone');
-			debugger;
 
 			dropElement.ondragover = event => dropzone.preventDefault(event);
 			dropElement.ondragleave = () => {
