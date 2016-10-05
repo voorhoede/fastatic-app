@@ -6,6 +6,17 @@ store.subscribe(() => {
 	const state = store.getState();
 });
 
+ipcRenderer.on('fastatic-is-running', () => {
+	store.dispatch({ type: 'RUN_FASTATIC' });
+	store.dispatch({ type: 'DROPZONE_SRC_DISABLED', value: true });
+	store.dispatch({ type: 'SHOW_DEST' });
+});
+
+ipcRenderer.on('destination-accepted', () => {
+	store.dispatch({ type: 'DROPZONE_DEST_DISABLED', value: true });
+});
+
+
 ipcRenderer.on('stop-fastatic', (event, args) => {
 	store.dispatch({ type: 'STOP_FASTATIC' });
 	store.dispatch({ type: 'ADD_RESULT', output: args });

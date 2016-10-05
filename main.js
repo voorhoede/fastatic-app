@@ -63,27 +63,13 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 ipcMain.on('run-fastatic', (event, args) => {
-	const userData = app.getPath('userData');
-	const src = args.src;
-	const dest = `${userData}/fastatic-working-folder`;
+	event.sender.send('fastatic-is-running');
 
-	// fastatic({ src, dest })
-	// 	.then((data) => {
-	// 		data.dest = args.dest;
-	// 		return ncp(`${userData}/fastatic-working-folder`, args.dest)
-	// 			.then(() => event.sender.send('stop-fastatic', data))
-	// 			.then(() => remove(`${userData}/fastatic-working-folder`));
-	// 	})
-	// 	.catch((err) => {
-	// 		remove(`${userData}/fastatic-working-folder`)
-	// 			.then(() => event.sender.send('stop-fastatic-with-errors', err));
-	// 	});
+	console.log('src:', args.src);
+});
 
-	setTimeout(() => {
-		event.sender.send('stop-fastatic', {
-			foo: 'bar'
-		});
-	}, 3000);
+ipcMain.on('destination-chosen', (event, args) => {
+	event.sender.send('destination-accepted');
 
-	console.log('src:', src);
+	console.log('dest:', args.dest);
 });
