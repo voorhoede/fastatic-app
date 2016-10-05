@@ -7,6 +7,16 @@
 		<p if="{ opts.path && !opts.isFile }" class="dropzone__message">Your <strong>destination</strong> folder: <span>{ opts.path }</span></p>
 
 		<p if="{ opts.isFile }" class="dropzone__message">Fastatic only runs on folders</p>
+
+		<hr class="dropzone-dest__seperator"/>
+
+		<p class="dropzone__message">Choose from these options:</p>
+
+		<div class="dropzone-dest__button-wrapper">
+			<button class="dropzone-dest__path-button" if="{ opts.srcPath && !opts.isFile }">{ opts.srcPath + '/dest' }</button>
+			<button class="dropzone-dest__path-button" if="{ opts.srcPath && !opts.isFile }">{ formatPath(opts.srcPath) }</button>
+		</div>
+
 	</section>
 
 	<script>
@@ -30,6 +40,12 @@
 				dropzone.onDrop(event, tag.opts.store, tag.name);
 			};
 		});
+
+		tag.formatPath = (path) => {
+			const folder = path.split('/').pop();
+			return path.replace(folder, 'dest');
+		};
+
 	</script>
 
 </fast-dropzone-dest>
