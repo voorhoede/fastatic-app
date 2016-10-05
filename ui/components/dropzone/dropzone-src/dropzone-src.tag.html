@@ -1,6 +1,11 @@
 <fast-dropzone-src>
 
-	<section class="dropzone" show="{ opts.display }">
+	<section
+		class="{
+			dropzone:true,
+			dropzone--disabled: opts.isDisabled
+		}"
+		show="{ opts.display }">
 
 		<p if="{ !opts.path || opts.isFile }" class="dropzone__message">Drop your <strong>source</strong> folder here</p>
 

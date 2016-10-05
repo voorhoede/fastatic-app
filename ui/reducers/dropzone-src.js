@@ -1,6 +1,11 @@
 const dropzoneSrc = (state = {}, action) => {
 	switch (action.type) {
 
+		case 'DROPZONE_SRC_DISABLED':
+			return Object.assign(state, {
+				disabled: action.value
+			});
+
 		case 'DROPZONE_SRC_HOVERING':
 			return Object.assign(state, {
 				hovering: action.value

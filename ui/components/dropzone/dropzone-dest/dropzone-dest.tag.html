@@ -1,6 +1,11 @@
 <fast-dropzone-dest>
 
-	<section class="dropzone" show="{ opts.display }">
+	<section
+		class="{
+			dropzone:true,
+			dropzone--disabled: opts.isDisabled
+		}"
+		show="{ opts.display }">
 
 		<p
 			if="{ !opts.path || opts.isFile }"
@@ -20,12 +25,16 @@
 			Fastatic only runs on folders
 		</p>
 
-		<hr class="dropzone-dest__seperator"/>
+		<hr if="{ !opts.isDisabled }" class="dropzone-dest__seperator"/>
 
-		<p class="dropzone__message">Choose from these options:</p>
+		<p
+			if="{ !opts.isDisabled }"
+			class="dropzone__message">
+			Choose from these options:
+		</p>
 
 		<div
-			if="{ opts.srcPath && !opts.isFile }"
+			if="{ opts.srcPath && !opts.isFile && !opts.isDisabled }"
 			class="dropzone-dest__button-wrapper">
 			<button
 				class="dropzone-dest__path-button"

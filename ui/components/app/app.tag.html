@@ -12,6 +12,7 @@
 			path="{ opts.store.getState().dropzoneSrc.path }"
 			is-file="{  opts.store.getState().dropzoneSrc.isFile  }"
 			store="{ opts.store }"
+			is-disabled="{ opts.store.getState().dropzoneSrc.disabled }"
 		></fast-dropzone-src>
 
 		<fast-dropzone-dest
@@ -25,6 +26,7 @@
 			src-path="{ opts.store.getState().dropzoneSrc.path }"
 			is-file="{  opts.store.getState().dropzoneDest.isFile  }"
 			store="{ opts.store }"
+			is-disabled="{ opts.store.getState().dropzoneDest.disabled }"
 		></fast-dropzone-dest>
 
 		<fast-result
