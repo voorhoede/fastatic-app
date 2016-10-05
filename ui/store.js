@@ -1,7 +1,7 @@
 const { createStore, applyMiddleware } = require('redux');
 const getInitialState = require('./get-initial-state');
 const reducer = require('./reducers/reducers');
-const { triggerFastatic } = require('./middleware/communicate-to-main');
+const { mainCommunication } = require('./middleware/main-communication');
 const { composeWithDevTools } = require('redux-devtools-extension');
 
 function configureStore(initialState) {
@@ -9,7 +9,7 @@ function configureStore(initialState) {
 		reducer,
 		initialState,
 		composeWithDevTools(
-			applyMiddleware(triggerFastatic),
+			applyMiddleware(mainCommunication),
 			window.devToolsExtension && window.devToolsExtension()
 		)
 	);
