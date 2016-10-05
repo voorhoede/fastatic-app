@@ -3,6 +3,7 @@
 	<section
 		class="{
 			dropzone:true,
+			dropzone-dest: true,
 			dropzone--disabled: opts.isDisabled,
 			dropzone--dropped: opts.isDropped,
 			dropzone--hovering: opts.isHovering,
@@ -24,8 +25,8 @@
 
 		<p
 			if="{ opts.isFile }"
-			class="dropzone__message">
-			Fastatic only runs on folders
+			class="dropzone__message dropzone__message--warning">
+			⚠️ Fastatic only runs on folders<br />({ opts.path })
 		</p>
 
 		<hr if="{ opts.srcPath && !opts.srcIsFile && !opts.isDisabled }" class="dropzone-dest__seperator"/>
@@ -82,6 +83,7 @@
 
 		tag.buttonHandler = (event) => {
 			tag.opts.store.dispatch({ type: 'DROPZONE_DEST_PATH', value: event.target.innerText });
+			tag.opts.store.dispatch({ type: 'DROPZONE_DEST_IS_FILE', value: false });
 		};
 
 	</script>
