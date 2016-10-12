@@ -20,6 +20,11 @@ const result = (state = {}, action) => {
 				show: false
 			});
 
+		case 'SET_RESULT_DEST_PATH':
+			return Object.assign(state, {
+				output: Object.assign(state.output, { dest: action.value })
+			});
+
 		default:
 			return state;
 	}

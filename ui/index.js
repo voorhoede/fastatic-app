@@ -13,7 +13,8 @@ ipcRenderer.on('fastatic-is-running', () => {
 	store.dispatch({ type: 'SHOW_DEST' });
 });
 
-ipcRenderer.on('fastatic-is-completed', () => {
+ipcRenderer.on('fastatic-is-completed', (event, args) => {
+	store.dispatch({ type: 'ADD_RESULT', output: args });
 	store.dispatch({ type: 'DROPZONE_SRC_HIDE_SPINNER' });
 });
 
@@ -22,9 +23,9 @@ ipcRenderer.on('destination-accepted', () => {
 });
 
 
-ipcRenderer.on('fastatic-finished', (event, args) => {
+ipcRenderer.on('flow-finished', (event, args) => {
+	store.dispatch({ type: 'SET_RESULT_DEST_PATH', value: args.dest });
 	store.dispatch({ type: 'STOP_FASTATIC' });
-	store.dispatch({ type: 'ADD_RESULT', output: args });
 	store.dispatch({ type: 'SHOW_RESULT' });
 });
 

@@ -64,46 +64,17 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 ipcMain.on('run-fastatic', (event, args) => {
+	console.log('src:', args.src);
 	event.sender.send('fastatic-is-running');
 
-	console.log('src:', args.src);
 	fastaticRunner.runFastatic()
-		.then(() => {
-			console.log('fastatic completed');
-			event.sender.send('fastatic-is-completed');
-		});
+		.then(output => event.sender.send('fastatic-is-completed', output));
 });
 
 ipcMain.on('destination-chosen', (event, args) => {
+	console.log('dest:', args.dest);
 	event.sender.send('destination-accepted');
 
-	setTimeout(() => {
-		event.sender.send('fastatic-finished', {
-			filesize: {
-				src: {
-					md: 13749,
-					png: 127404,
-					css: 244080,
-					json: 10375,
-					html: 17954,
-					js: 3581,
-					txt: 1070
-				},
-				dest: {
-					md: 13749,
-					png: 107499,
-					css: 172528,
-					json: 8219,
-					html: 13655,
-					js: 1490,
-					txt: 1070
-				}
-			},
-			src: './examples/microsoft.github.io-master',
-			dest: args.dest
-		}
-	);
-	}, 3000);
-
-	console.log('dest:', args.dest);
+	fastaticRunner.setDestination(args)
+		.then(destination => event.sender.send('flow-finished', { dest: destination }));
 });
