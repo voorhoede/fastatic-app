@@ -17,7 +17,8 @@ module.exports = function getInitialState() {
 			disabled: false,
 			hovering: false,
 			isFile: false,
-			path: ''
+			path: '',
+			spinner: false
 		},
 		errorlist: {
 			show: false,

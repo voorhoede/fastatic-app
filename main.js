@@ -5,6 +5,7 @@ const ncp = promisify(require('ncp'));
 const remove = promisify(require('rimraf'));
 const devtoolsInstaller = require('electron-devtools-installer');
 const { REDUX_DEVTOOLS } = require('electron-devtools-installer');
+const fastaticRunner = require('./lib/fastatic-runner').default;
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
@@ -66,6 +67,11 @@ ipcMain.on('run-fastatic', (event, args) => {
 	event.sender.send('fastatic-is-running');
 
 	console.log('src:', args.src);
+	fastaticRunner.runFastatic()
+		.then(() => {
+			console.log('fastatic completed');
+			event.sender.send('fastatic-is-completed');
+		});
 });
 
 ipcMain.on('destination-chosen', (event, args) => {

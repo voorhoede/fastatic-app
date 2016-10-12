@@ -17,6 +17,16 @@ const dropzoneSrc = (state = {}, action) => {
 				isFile: action.isFile
 			});
 
+		case 'DROPZONE_SRC_SHOW_SPINNER':
+			return Object.assign(state, {
+				spinner: true
+			});
+
+		case 'DROPZONE_SRC_HIDE_SPINNER':
+			return Object.assign(state, {
+				spinner: false
+			});
+
 		default:
 			return state;
 

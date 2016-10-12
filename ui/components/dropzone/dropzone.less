@@ -13,7 +13,7 @@
 	display: flex;
 }
 
-.dropzone.dropzone--hovering {
+.dropzone--hovering {
 	border: 1px dashed @indigo;
 	box-shadow: inset 0px 0px 25px 0px @indigolight;
 
@@ -22,17 +22,17 @@
 	}
 }
 
-.dropzone.dropzone--is-file {
+.dropzone--is-file {
 	border: 1px dashed @red;
 	box-shadow: inset 0px 0px 25px 0px @redlight;
 }
 
-.dropzone.dropzone--dropped {
+.dropzone--dropped {
 	border: 1px dashed @teal;
 	box-shadow: inset 0px 0px 25px 0px @teallight;
 }
 
-.dropzone.dropzone--disabled {
+.dropzone--disabled {
 	border: 1px dashed @grey;
 	box-shadow: inset 0px 0px 25px 0px @greylight;
 	color: @grey;
@@ -40,6 +40,10 @@
 	.dropzone__message {
 		margin: 0;
 	}
+}
+
+.dropzone--spinner {
+	min-height: 100px; // spinner height
 }
 
 .dropzone__message {

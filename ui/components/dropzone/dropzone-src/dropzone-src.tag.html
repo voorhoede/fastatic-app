@@ -6,7 +6,8 @@
 			dropzone--disabled: opts.isDisabled,
 			dropzone--dropped: opts.isDropped,
 			dropzone--hovering: opts.isHovering,
-			dropzone--is-file: opts.isFile
+			dropzone--is-file: opts.isFile,
+			dropzone--spinner: opts.spinner
 		}"
 		show="{ opts.display }">
 
@@ -27,6 +28,8 @@
 			class="dropzone__message dropzone__message--warning">
 			⚠️ Fastatic only runs on folders<br />({ opts.path })
 		</p>
+
+		<fast-circle-animation show="{ opts.spinner }"></fast-circle-animation>
 	</section>
 
 	<script>

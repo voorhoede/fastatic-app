@@ -9,7 +9,12 @@ store.subscribe(() => {
 ipcRenderer.on('fastatic-is-running', () => {
 	store.dispatch({ type: 'RUN_FASTATIC' });
 	store.dispatch({ type: 'DROPZONE_SRC_DISABLED', value: true });
+	store.dispatch({ type: 'DROPZONE_SRC_SHOW_SPINNER' });
 	store.dispatch({ type: 'SHOW_DEST' });
+});
+
+ipcRenderer.on('fastatic-is-completed', () => {
+	store.dispatch({ type: 'DROPZONE_SRC_HIDE_SPINNER' });
 });
 
 ipcRenderer.on('destination-accepted', () => {
