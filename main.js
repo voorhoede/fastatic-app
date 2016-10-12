@@ -68,7 +68,11 @@ ipcMain.on('run-fastatic', (event, args) => {
 	event.sender.send('fastatic-is-running');
 
 	fastaticRunner.runFastatic()
-		.then(output => event.sender.send('fastatic-is-completed', output));
+		.then(output => event.sender.send('fastatic-is-completed', output))
+		.catch((errors) => {
+			console.log('errors');
+			event.sender.send('fastatic-failed', errors);
+		});
 });
 
 ipcMain.on('destination-chosen', (event, args) => {

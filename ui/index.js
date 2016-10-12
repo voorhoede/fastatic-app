@@ -18,6 +18,13 @@ ipcRenderer.on('fastatic-is-completed', (event, args) => {
 	store.dispatch({ type: 'DROPZONE_SRC_HIDE_SPINNER' });
 });
 
+ipcRenderer.on('fastatic-failed', (event, args) => {
+	store.dispatch({ type: 'ADD_ERRORS', errors: args });
+	store.dispatch({ type: 'DROPZONE_SRC_HIDE_SPINNER' });
+	store.dispatch({ type: 'HIDE_DEST' });
+	store.dispatch({ type: 'SHOW_ERROR' });
+});
+
 ipcRenderer.on('destination-accepted', () => {
 	store.dispatch({ type: 'DROPZONE_DEST_DISABLED', value: true });
 });

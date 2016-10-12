@@ -25,6 +25,11 @@ const app = (state = {}, action) => {
 				activeView: 'error'
 			});
 
+		case 'HIDE_DEST':
+			return Object.assign(state, {
+				destViewDisplay: false
+			});
+
 		default:
 			return state;
 
