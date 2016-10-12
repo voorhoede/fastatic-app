@@ -1,4 +1,5 @@
 const { combineReducers } = require('redux');
+const getInitialState = require('../get-initial-state');
 const app = require('./app');
 const dropzoneDest = require('./dropzone-dest');
 const dropzoneSrc = require('./dropzone-src');
@@ -15,4 +16,17 @@ const fastaticReducers = combineReducers({
 	result
 });
 
-module.exports = fastaticReducers;
+
+const rootReducer = (state, action) => {
+	switch (action.type) {
+
+		case 'RESET_STATE':
+			return getInitialState();
+
+		default:
+			return fastaticReducers(state, action);
+
+	}
+};
+
+module.exports = rootReducer;

@@ -4,7 +4,7 @@
   "description": "A Graphical User Interface for fastatic",
   "main": "main.js",
   "scripts": {
-    "prestart": "lessc ui/styles.less ui/styles.css & riot ui/components ui/compiled-tags.js --ext html",
+    "prestart": "lessc ui/styles.less ui/styles.css --source-map & riot ui/components ui/compiled-tags.js --ext html",
     "start": "electron .",
     "lint": "eslint"
   },

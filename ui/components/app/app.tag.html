@@ -60,5 +60,14 @@
 			store="{ opts.store }"
 			toggle-callback="{ toggleError }"
 		></fast-errorlist>
+
+		<fast-reset
+			class="{
+				app__view: true,
+				app__view--display: opts.store.getState().app.resultViewDisplay || opts.store.getState().app.errorViewDisplay
+			}"
+			display="{ opts.store.getState().app.resultViewDisplay || opts.store.getState().app.errorViewDisplay }"
+			store="{ opts.store }"
+		></fast-reset>
 	</section>
 </fast-app>

@@ -1,0 +1,10 @@
+<fast-reset>
+
+	<button if="{ opts.display }" onclick="{ clickHandler }">Reset</button>
+
+	<script>
+		this.clickHandler = () => {
+			this.opts.store.dispatch({ type: 'RESET_STATE' });
+		};
+	</script>
+</fast-reset>

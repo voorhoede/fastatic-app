@@ -1,5 +1,3 @@
-const getInitialState = require('../get-initial-state');
-
 const app = (state = {}, action) => {
 	switch (action.type) {
 
@@ -26,9 +24,6 @@ const app = (state = {}, action) => {
 				errorViewDisplay: true,
 				activeView: 'error'
 			});
-
-		case 'RESET_APP_VIEWS':
-			return getInitialState().app;
 
 		default:
 			return state;
