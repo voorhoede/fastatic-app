@@ -16,6 +16,10 @@
 .dropzone.dropzone--hovering {
 	border: 1px dashed @indigo;
 	box-shadow: inset 0px 0px 25px 0px @indigolight;
+
+	& * {
+		pointer-events: none;
+	}
 }
 
 .dropzone.dropzone--is-file {
