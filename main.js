@@ -1,9 +1,5 @@
-// const fastatic = require('fastatic');
 require('nodejs-dashboard');
 const electron = require('electron');
-const promisify = require('bluebird').promisify;
-const ncp = promisify(require('ncp'));
-const remove = promisify(require('rimraf'));
 const devtoolsInstaller = require('electron-devtools-installer');
 const { REDUX_DEVTOOLS } = require('electron-devtools-installer');
 const fastaticRunner = require('./lib/fastatic-runner').default;
@@ -65,21 +61,16 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 ipcMain.on('run-fastatic', (event, args) => {
-	console.log('src:', args.src);
 	event.sender.send('fastatic-is-running');
 
-	fastaticRunner.runFastatic()
+	fastaticRunner.runFastatic(args)
 		.then(output => event.sender.send('fastatic-is-completed', output))
-		.catch((errors) => {
-			console.log('errors');
-			event.sender.send('fastatic-failed', errors);
-		});
+		.catch(errors => event.sender.send('fastatic-failed', errors));
 });
 
 ipcMain.on('destination-chosen', (event, args) => {
-	console.log('dest:', args.dest);
 	event.sender.send('destination-accepted');
 
-	fastaticRunner.setDestination(args)
-		.then(destination => event.sender.send('flow-finished', { dest: destination }));
+	fastaticRunner.setDestination(args.dest)
+		.then(() => event.sender.send('flow-finished', { dest: args.dest }));
 });
