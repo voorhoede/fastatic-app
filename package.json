@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "prestart": "lessc ui/styles.less ui/styles.css --source-map & riot ui/components ui/compiled-tags.js --ext html",
-    "start": "electron .",
+    "start": "nodejs-dashboard electron .",
     "lint": "eslint"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "electron-devtools-installer": "2.0.1",
     "filesize": "3.3.0",
     "ncp": "2.0.0",
+    "nodejs-dashboard": "0.1.0",
     "redux": "3.6.0",
     "redux-devtools-extension": "1.0.0",
     "rimraf": "2.5.4",

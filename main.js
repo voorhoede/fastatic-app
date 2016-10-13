@@ -1,4 +1,5 @@
 // const fastatic = require('fastatic');
+require('nodejs-dashboard');
 const electron = require('electron');
 const promisify = require('bluebird').promisify;
 const ncp = promisify(require('ncp'));
