@@ -63,7 +63,7 @@ app.on('activate', () => {
 ipcMain.on('run-fastatic', (event, args) => {
 	event.sender.send('fastatic-is-running');
 
-	fastaticRunner.runFastatic(args)
+	fastaticRunner.runFastatic(args.src)
 		.then(output => event.sender.send('fastatic-is-completed', output))
 		.catch(errors => event.sender.send('fastatic-failed', errors));
 });
@@ -72,5 +72,5 @@ ipcMain.on('destination-chosen', (event, args) => {
 	event.sender.send('destination-accepted');
 
 	fastaticRunner.setDestination(args.dest)
-		.then(() => event.sender.send('flow-finished', { dest: args.dest }));
+		.then(dest => event.sender.send('flow-finished', { dest }));
 });
