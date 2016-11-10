@@ -2,7 +2,7 @@
 
 A GUI for `fastatic`
 
-This project builds on a version of [`fastatic`](https://github.com/voorhoede/fastatic) that is currently in development.
+This project builds on a version of [`fastatic`](https://github.com/voorhoede/fastatic) which is currently in development.
 As such, the `fastatic` module is not in the `package.js`. 
 
 Once the `fastatic` module is released with the features this projects needs, 
