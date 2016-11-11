@@ -7,7 +7,7 @@
     "prestart": "lessc ui/styles.less ui/styles.css --source-map & riot ui/components ui/compiled-tags.js --ext html",
     "start": "nodejs-dashboard electron .",
     "lint": "eslint",
-    "prepackage": "icon-gen --input assets/icon.svg --output ./releases/icons --report",
+    "prepackage": "rimraf releases && icon-gen --input assets/icon.svg --output ./releases/icons --report",
     "package": "electron-packager . --out=releases --overwrite --no-prune --icon=./releases/icons/app.icns"
   },
   "repository": {
