@@ -15,7 +15,6 @@ devtoolsInstaller.default(REDUX_DEVTOOLS);
 function createWindow() {
 	mainWindow = new BrowserWindow({ width: 800, height: 600, x: 0, y: 0, titleBarStyle: 'hidden-inset' });
 	mainWindow.loadURL(`file://${__dirname}/ui/index.html`);
-	mainWindow.webContents.openDevTools();
 
 	mainWindow.on('closed', () => {
 		mainWindow = null;
