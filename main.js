@@ -2,12 +2,13 @@ require('nodejs-dashboard');
 const electron = require('electron');
 const devtoolsInstaller = require('electron-devtools-installer');
 const { REDUX_DEVTOOLS } = require('electron-devtools-installer');
-const fastaticRunner = require('./lib/fastatic-runner').default;
+const FastaticRunner = require('./lib/fastatic-runner');
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const ipcMain = electron.ipcMain;
 let mainWindow;
+let fastaticRunnerInstance;
 
 devtoolsInstaller.default(REDUX_DEVTOOLS);
 
@@ -46,15 +47,17 @@ app.on('activate', () => {
 // module to keep this main module slim.
 ipcMain.on('run-fastatic', (event, args) => {
 	event.sender.send('fastatic-is-running');
+	fastaticRunnerInstance = new FastaticRunner();
 
-	fastaticRunner.runFastatic(args.src)
+	fastaticRunnerInstance.runFastatic(args.src)
 		.then(output => event.sender.send('fastatic-is-completed', output))
-		.catch(errors => event.sender.send('fastatic-failed', errors));
+		.catch(errors => {console.trace(errors); event.sender.send('fastatic-failed', errors)});
 });
 
 ipcMain.on('destination-chosen', (event, args) => {
 	event.sender.send('destination-accepted');
 
-	fastaticRunner.setDestination(args.dest)
+
+	fastaticRunnerInstance.setDestination(args.dest)
 		.then(dest => event.sender.send('flow-finished', { dest }));
 });
