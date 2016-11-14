@@ -1,5 +1,5 @@
 {
-  "name": "fastatic-ui",
+  "name": "fastatic-app",
   "version": "0.1.0",
   "description": "A Graphical User Interface for the Fastatic NodeJS module. Note that this app is still in beta.",
   "title": "Fastatic App",
@@ -13,12 +13,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/voorhoede-labs/fastatic-gui.git"
+    "url": "git+https://github.com/voorhoede-labs/fastatic-app.git"
   },
   "bugs": {
-    "url": "https://github.com/voorhoede-labs/fastatic-gui/issues"
+    "url": "https://github.com/voorhoede-labs/fastatic-app/issues"
   },
-  "homepage": "https://github.com/voorhoede-labs/fastatic-gui#readme",
+  "homepage": "https://github.com/voorhoede-labs/fastatic-app#readme",
   "keywords": [
     "fastatic",
     "ui",
@@ -28,9 +28,9 @@
   "author": "De Voorhoede (https://voorhoede.nl/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/voorhoede-labs/fastatic-gui/issues"
+    "url": "https://github.com/voorhoede-labs/fastatic-app/issues"
   },
-  "homepage": "https://github.com/voorhoede-labs/fastatic-gui#readme",
+  "homepage": "https://github.com/voorhoede-labs/fastatic-app#readme",
   "dependencies": {
     "about-window": "1.6.0",
     "bluebird": "3.4.6",
