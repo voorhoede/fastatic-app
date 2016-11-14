@@ -9,7 +9,7 @@
     "start": "NODE_ENV=development nodejs-dashboard electron .",
     "lint": "eslint",
     "prepackage": "rimraf releases && icon-gen --input assets/icon.svg --output ./releases/icons --report",
-    "package": "electron-packager . 'Fastatic App' --out=releases --overwrite --no-prune --icon=./releases/icons/app.icns"
+    "package": "electron-packager . 'Fastatic App' --out=releases --overwrite --icon=./releases/icons/app.icns"
   },
   "repository": {
     "type": "git",
