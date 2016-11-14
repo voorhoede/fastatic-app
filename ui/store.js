@@ -9,8 +9,7 @@ function configureStore(initialState) {
 		reducer,
 		initialState,
 		composeWithDevTools(
-			applyMiddleware(mainCommunication),
-			window.devToolsExtension && window.devToolsExtension()
+			applyMiddleware(mainCommunication)
 		)
 	);
 }

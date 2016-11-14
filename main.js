@@ -1,7 +1,5 @@
 require('nodejs-dashboard');
 const { app, Menu, BrowserWindow, ipcMain, dialog } = require('electron');
-const devtoolsInstaller = require('electron-devtools-installer');
-const { REDUX_DEVTOOLS } = require('electron-devtools-installer');
 const FastaticRunner = require('./lib/fastatic-runner');
 const menuCommands = require('./lib/menu-commands');
 const openAboutWindow = require('about-window').default;
@@ -11,8 +9,6 @@ let mainWindow;
 let fastaticRunnerInstance;
 let menuTemplate;
 let menu;
-
-devtoolsInstaller.default(REDUX_DEVTOOLS);
 
 function createWindow() {
 	mainWindow = new BrowserWindow({ width: 800, height: 600, x: 0, y: 0, titleBarStyle: 'hidden-inset' });
