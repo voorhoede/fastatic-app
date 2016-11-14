@@ -4,6 +4,8 @@ const devtoolsInstaller = require('electron-devtools-installer');
 const { REDUX_DEVTOOLS } = require('electron-devtools-installer');
 const FastaticRunner = require('./lib/fastatic-runner');
 const menuCommands = require('./lib/menu-commands');
+const openAboutWindow = require('about-window').default;
+const pkg = require('./package.json');
 
 let mainWindow;
 let fastaticRunnerInstance;
@@ -15,7 +17,10 @@ devtoolsInstaller.default(REDUX_DEVTOOLS);
 function createWindow() {
 	mainWindow = new BrowserWindow({ width: 800, height: 600, x: 0, y: 0, titleBarStyle: 'hidden-inset' });
 	mainWindow.loadURL(`file://${__dirname}/ui/index.html`);
-	mainWindow.webContents.openDevTools();
+
+	if (process.env.NODE_ENV === 'development') {
+		mainWindow.webContents.openDevTools();
+	}
 
 	mainWindow.on('closed', () => {
 		mainWindow = null;
@@ -81,7 +86,17 @@ ipcMain.on('menu', (event, command) => {
 menuTemplate = [
 	{
 		submenu: [
-			{ role: 'about' },
+			{
+				label: 'About Fastatic App',
+				click: () => {
+					openAboutWindow({
+						icon_path: `file://${__dirname}/assets/icon.svg`,
+						bug_report_url: pkg.bugs.url,
+						homepage: pkg.homepage,
+						description: pkg.description
+					})
+				}
+			},
 			{ type: 'separator' },
 			{ role: 'hide' },
 			{ type: 'separator' },
