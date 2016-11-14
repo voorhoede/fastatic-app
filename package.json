@@ -1,14 +1,15 @@
 {
   "name": "fastatic-ui",
   "version": "0.1.0",
-  "description": "A Graphical User Interface for the fastatic node module",
+  "description": "A Graphical User Interface for the Fastatic NodeJS module",
+  "title": "Fastatic App",
   "main": "main.js",
   "scripts": {
     "prestart": "lessc ui/styles.less ui/styles.css --source-map --source-map-rootpath=ui/ & riot ui/components ui/compiled-tags.js --ext html",
     "start": "NODE_ENV=development nodejs-dashboard electron .",
     "lint": "eslint",
     "prepackage": "rimraf releases && icon-gen --input assets/icon.svg --output ./releases/icons --report",
-    "package": "electron-packager . --out=releases --overwrite --no-prune --icon=./releases/icons/app.icns"
+    "package": "electron-packager . 'Fastatic App' --out=releases --overwrite --no-prune --icon=./releases/icons/app.icns"
   },
   "repository": {
     "type": "git",

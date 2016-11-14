@@ -87,20 +87,22 @@ menuTemplate = [
 	{
 		submenu: [
 			{
-				label: 'About Fastatic App',
+				label: `About ${pkg.title}`,
 				click: () => {
 					openAboutWindow({
 						icon_path: `file://${__dirname}/assets/icon.svg`,
 						bug_report_url: pkg.bugs.url,
 						homepage: pkg.homepage,
-						description: pkg.description
+						description: pkg.description,
+						css_path: `file://${__dirname}/ui/styles.css`,
+						copyright: `De Voorhoede (c) ${new Date().getFullYear()}`
 					})
 				}
 			},
 			{ type: 'separator' },
-			{ role: 'hide' },
+			{ role: 'hide', label: `Hide ${pkg.title}` },
 			{ type: 'separator' },
-      		{ role: 'quit' }
+      		{ role: 'quit', label: `Quit ${pkg.title}` }
 		]
 	},
 	{
