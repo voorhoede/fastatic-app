@@ -4,7 +4,7 @@
   "description": "A Graphical User Interface for fastatic",
   "main": "main.js",
   "scripts": {
-    "prestart": "lessc ui/styles.less ui/styles.css --source-map & riot ui/components ui/compiled-tags.js --ext html",
+    "prestart": "lessc ui/styles.less ui/styles.css --source-map --source-map-rootpath=ui/ & riot ui/components ui/compiled-tags.js --ext html",
     "start": "nodejs-dashboard electron .",
     "lint": "eslint",
     "prepackage": "rimraf releases && icon-gen --input assets/icon.svg --output ./releases/icons --report",

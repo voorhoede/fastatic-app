@@ -31,6 +31,17 @@
 
 		<hr if="{ opts.srcPath && !opts.srcIsFile && !opts.isDisabled }" class="dropzone-dest__seperator"/>
 
+	<p class="dropzone__message" if="{ !opts.path || opts.isFile }">Use
+			<button
+				tabindex="0"
+				onclick="{ onKeyCommandClick }"
+				class="keycode">
+				<kbd>⌘</kbd>+<kbd>D</kbd>
+			</button>
+		</p>
+
+		<hr if="{ opts.srcPath && !opts.srcIsFile && !opts.isDisabled }" class="dropzone-dest__seperator"/>
+
 		<p
 			if="{ opts.srcPath && !opts.srcIsFile && !opts.isDisabled }"
 			class="dropzone__message">
@@ -88,6 +99,9 @@
 				isFile: false });
 		};
 
+		tag.onKeyCommandClick = () => {
+			dropzone.onKeyCommandClick(tag.name, 'CmdOrCtrlPlusD');
+		};
 	</script>
 
 </fast-dropzone-dest>

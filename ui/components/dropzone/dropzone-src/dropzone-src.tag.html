@@ -17,6 +17,17 @@
 			Drop your <strong>source</strong> folder here
 		</p>
 
+		<hr if="{ !opts.path || opts.isFile }" class="dropzone-dest__seperator"/>
+
+		<p if="{ !opts.path || opts.isFile }" class="dropzone__message">Use
+			<button
+				tabindex="0"
+				onclick="{ onKeyCommandClick }"
+				class="keycode">
+				<kbd>⌘</kbd>+<kbd>O</kbd>
+			</button>
+		</p>
+
 		<p
 			if="{ opts.path && !opts.isFile }"
 			class="dropzone__message">
@@ -52,6 +63,10 @@
 				dropzone.onDrop(event, tag.opts.store, tag.name);
 			};
 		});
+
+		tag.onKeyCommandClick = () => {
+			dropzone.onKeyCommandClick(tag.name, 'CmdOrCtrlPlusO');
+		};
 	</script>
 
 </fast-dropzone-src>

@@ -3,6 +3,7 @@ const { app, Menu, BrowserWindow, ipcMain, dialog } = require('electron');
 const devtoolsInstaller = require('electron-devtools-installer');
 const { REDUX_DEVTOOLS } = require('electron-devtools-installer');
 const FastaticRunner = require('./lib/fastatic-runner');
+const menuCommands = require('./lib/menu-commands');
 
 let mainWindow;
 let fastaticRunnerInstance;
@@ -71,6 +72,11 @@ ipcMain.on('destination-chosen', (event, args) => {
 		});
 });
 
+ipcMain.on('menu', (event, command) => {
+	if ( menuCommands.hasOwnProperty(command) ) {
+		menuCommands[command](mainWindow)
+	}
+})
 
 menuTemplate = [
 	{
@@ -88,25 +94,13 @@ menuTemplate = [
 			{
 				label: 'Open Source dir',
 				accelerator: 'CmdOrCtrl+o',
-				click (item, focusedWindow) {
-					dialog.showOpenDialog(mainWindow, { properties: ['openDirectory'] }, (paths) => {
-						if (paths && paths[0]) {
-							focusedWindow.webContents.send('menu-open-source', paths[0]);
-						}
-					});
-				},
+				click: () => menuCommands.CmdOrCtrlPlusO(mainWindow),
 				enabled: true
 			},
 			{
 				label: 'Open Dest dir',
 				accelerator: 'CmdOrCtrl+d',
-				click (item, focusedWindow) {
-					dialog.showOpenDialog(mainWindow, { properties: ['openDirectory'] }, (paths) => {
-						if (paths && paths[0]) {
-							focusedWindow.webContents.send('menu-open-dest', paths[0]);
-						}
-					});
-				},
+				click: () => menuCommands.CmdOrCtrlPlusD(mainWindow),
 				enabled: false
 			}
 		]

@@ -39,6 +39,15 @@ const dropzone = {
 		};
 		store.dispatch(actionHover);
 		store.dispatch(actionPath);
+	},
+
+	onKeyCommandClick: (name, command) => {
+		const action = {
+			type: `menu_command`.toUpperCase(),
+			value: command
+		};
+
+		store.dispatch(action);
 	}
 };
 

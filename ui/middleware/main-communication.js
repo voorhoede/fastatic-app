@@ -12,6 +12,10 @@ function chooseDestination(action) {
 	}
 }
 
+function menuCommand(action) {
+	ipcRenderer.send('menu', action.value);
+}
+
 const mainCommunication = store => next => (action) => {
 	switch (action.type) {
 
@@ -21,6 +25,10 @@ const mainCommunication = store => next => (action) => {
 
 		case 'DROPZONE_DEST_PATH':
 				chooseDestination(action);
+			break;
+
+		case 'MENU_COMMAND':
+				menuCommand(action);
 			break;
 
 		default:
