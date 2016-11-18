@@ -1,6 +1,6 @@
 {
   "name": "fastatic-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Graphical User Interface for the Fastatic NodeJS module. Note that this app is still in beta.",
   "title": "Fastatic App",
   "main": "main.js",
