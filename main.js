@@ -51,7 +51,7 @@ app.on('activate', () => {
 // module to keep this main module slim.
 ipcMain.on('run-fastatic', (event, args) => {
 	event.sender.send('fastatic-is-running');
-	fastaticRunnerInstance = new FastaticRunner();
+	fastaticRunnerInstance = new FastaticRunner(mainWindow);
 
 	menu.items[1].submenu.items[0].enabled = false;
 	menu.items[1].submenu.items[1].enabled = true;
@@ -98,7 +98,7 @@ menuTemplate = [
 			{ type: 'separator' },
 			{ role: 'hide', label: `Hide ${pkg.title}` },
 			{ type: 'separator' },
-      		{ role: 'quit', label: `Quit ${pkg.title}` }
+			{ role: 'quit', label: `Quit ${pkg.title}` }
 		]
 	},
 	{
@@ -116,6 +116,18 @@ menuTemplate = [
 				click: () => menuCommands.CmdOrCtrlPlusD(mainWindow),
 				enabled: false
 			}
+		]
+	},
+	{
+		label: 'View',
+		submenu: [
+			{
+				label: 'Toggle Developer Tools',
+				accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+				click (item, focusedWindow) {
+				  if (focusedWindow) focusedWindow.webContents.toggleDevTools()
+				}
+			  },
 		]
 	}
 ];

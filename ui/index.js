@@ -48,3 +48,7 @@ ipcRenderer.on('menu-open-dest', (event, args) => {
 	};
 	store.dispatch(actionPath);
 });
+
+ipcRenderer.on('log', (event, args) => {
+	console.log('log from main:', args);
+});
