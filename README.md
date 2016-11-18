@@ -4,21 +4,34 @@
 for macOS.
 
 ## Introduction
-Fastatic App shrinks your static site footprint. Making it even faster. Use it 
-as a standalone app, or plug it directly in your build process via its engine
-[`fastatic`](https://github.com/voorhoede/fastatic).
+Fastatic App shrinks your static site footprint. Making it even faster to 
+download. Use it as a standalone app, or plug it directly in your build process 
+via its engine [`fastatic`](https://github.com/voorhoede/fastatic). Jump to 
+[How does it work?](#how-does-it-work) to find out how to use Fastatic App.
 
 ![Fastatic App](screenshot-start.png)
 
 ## Speed up your static site
 
 A speedy website is important. Having a static site is a very good first step.
-Using static site generators are very important. However, often times they do 
-not optimise your site right out of the box. Fastatic App solves that by being a 
-one stop solution. Drag your static site in Fastatic and it optimises it for 
-you.
+Using a static site generator can be very convenient. However, often times they 
+do not optimise your site right out of the box. Fastatic App solves that by 
+being a one stop solution. Drag your static site in Fastatic and it optimises it 
+for you.
 
 ![Fastatic App output](screenshot-end.png)
+
+## How does it work?
+
+When you open the app, you can drag the folder with your static site files into 
+app window. Next you can choose a destination folder for your optimised files.
+If you do not have a destination folder, you can create one or choose from the 
+options presented by the app.
+
+When `fastatic` is done optimising your files, you'll see a report showing you
+how much your files have shrunk in size and where to find your optimised files.
+
+Now upload your optimised files to your website, and your done!
 
 ## What does it do?
 
