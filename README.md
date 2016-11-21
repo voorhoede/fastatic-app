@@ -3,16 +3,16 @@
 **Warning:** This app is still in Beta. As such, we currently only have a build 
 for macOS.
 
+### Download
+
+You can find Fastatic App in the [releases](fastatic-app/releases) section. 
+Under "Latest release", download `Fastatic.App-darwin-x64.zip`.
+
 ## Introduction
 Fastatic App shrinks your static site footprint. Making it even faster to 
 download. Use it as a standalone app, or plug it directly in your build process 
 via its engine [`fastatic`](https://github.com/voorhoede/fastatic). Jump to 
 [How does it work?](#how-does-it-work) to find out how to use Fastatic App.
-
-## Download
-
-You can find Fastatic App in the [releases]('fastatic-app/releases') section. 
-Under "Latest release", download `Fastatic.App-darwin-x64.zip`.
 
 ![Fastatic App](screenshot-start.png)
 
