@@ -5,7 +5,7 @@ for macOS.
 
 ### Download
 
-You can find Fastatic App in the [releases](fastatic-app/releases) section. 
+You can find Fastatic App in the releases section. 
 Under "Latest release", download `Fastatic.App-darwin-x64.zip`.
 
 ## Introduction
